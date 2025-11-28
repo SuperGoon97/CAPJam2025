@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dms314f3ihph4"]
+
+[ext_resource type="FontFile" uid="uid://cde0djbcupfb" path="res://Assets/Fonts/Rollingstar/The Rollingstar OTF.otf" id="1_a2v5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dux8k"]
+
+[resource]
+default_font = ExtResource("1_a2v5a")
+default_font_size = 58
+Button/colors/font_hover_color = Color(0.79363614, 0.14739007, 0.16784737, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_dux8k")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_dux8k")
+Button/styles/focus = SubResource("StyleBoxEmpty_dux8k")
+Button/styles/hover = SubResource("StyleBoxEmpty_dux8k")
