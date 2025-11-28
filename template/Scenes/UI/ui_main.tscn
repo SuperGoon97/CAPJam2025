@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c76m4hlgodjv4"]
+[gd_scene load_steps=3 format=3 uid="uid://c76m4hlgodjv4"]
 
 [ext_resource type="Script" uid="uid://b33l07rn455xp" path="res://Scripts/UI/Menu/ui_main.gd" id="1_v7lif"]
+[ext_resource type="PackedScene" uid="uid://b65ptox7c8pai" path="res://Scenes/UI/Game/shop_control.tscn" id="2_pclsy"]
 
 [node name="UiMain" type="Control"]
 layout_mode = 3
@@ -20,3 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ShopControl" parent="." instance=ExtResource("2_pclsy")]
+layout_mode = 1
+offset_right = -1447.0

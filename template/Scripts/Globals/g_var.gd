@@ -3,6 +3,7 @@ extends Node
 enum SUB_MANAGERS {
 	UI_MANAGER,
 	INPUT_MANAGER,
+	BUILD_MANAGER,
 }
 
 ## Layer enums for quick layer selection
@@ -22,6 +23,7 @@ enum LAYERS {
 static var sub_manager_dict : Dictionary = {
 	SUB_MANAGERS.UI_MANAGER:UIManager,
 	SUB_MANAGERS.INPUT_MANAGER:InputManager,
+	SUB_MANAGERS.BUILD_MANAGER:BuildManager,
 }
 
 ## int assosciated with the Layer
@@ -61,6 +63,18 @@ var signal_bus:SignalBus:
 		return signal_bus
 	set(value):
 		signal_bus = value
+
+var ui_manager:UIManager:
+	get:
+		return ui_manager
+	set(value):
+		ui_manager = value
+
+var build_manager:BuildManager:
+	get:
+		return build_manager
+	set(value):
+		build_manager = value
 
 var main_viewport:MainViewport:
 	get:

@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://b65ptox7c8pai"]
+
+[ext_resource type="Script" uid="uid://c5cdl1naw77lt" path="res://Scripts/UI/Buttons/shop_button.gd" id="1_7g370"]
+[ext_resource type="Resource" uid="uid://cpujqdhgm87q3" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_body_test.tres" id="2_8n5a4"]
+
+[node name="ShopControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1Holder" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_7g370")
+rocket_resource = ExtResource("2_8n5a4")
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+
+[node name="Button1Holder2" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_7g370")
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+
+[node name="Button1Holder3" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_7g370")
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+
+[node name="Button1Holder4" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_7g370")
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"

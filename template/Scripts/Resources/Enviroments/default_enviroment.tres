@@ -1,0 +1,9 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://lv771tblxdxi"]
+
+[sub_resource type="Sky" id="Sky_iwgc2"]
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_iwgc2")
+ambient_light_source = 3
+ambient_light_color = Color(0.61841446, 0.9090172, 0.9843164, 1)

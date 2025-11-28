@@ -14,10 +14,7 @@ func _ready() -> void:
 	super()
 
 func _game_ready():
-	signal_bus = GVar.get("active_signal_bus")
-	signal_bus.roll_requested.connect(ui_main.can_roll)
-	signal_bus.score_changed.connect(ui_main.update_score)
-	signal_bus.score_required_changed.connect(ui_main.update_score_required)
+	signal_bus = GVar.get("signal_bus")
 	pass
 
 func create_ui_main():
@@ -27,6 +24,6 @@ func create_ui_main():
 
 func create_canvas_layer():
 	canvas_layer = CanvasLayer.new()
-	canvas_layer.layer = 4096
+	canvas_layer.layer = GVar.LAYERS.LOWER
 	call_deferred("add_child", canvas_layer)
 	await canvas_layer.ready

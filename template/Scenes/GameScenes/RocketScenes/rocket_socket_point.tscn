@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://blrbcw6akeaon"]
+
+[ext_resource type="Material" uid="uid://dfhma43q3ius4" path="res://Assets/Materials/socket_material.tres" id="1_3kder"]
+[ext_resource type="Script" uid="uid://cx5thw0a2tp5d" path="res://Scripts/Game/Rocket/rocket_socket_point.gd" id="1_uhce1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xoba2"]
+material = ExtResource("1_3kder")
+radius = 0.125
+height = 0.25
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3kder"]
+radius = 0.1248884
+
+[node name="RocketSocketPoint" type="Node3D"]
+script = ExtResource("1_uhce1")
+
+[node name="RocketSocketMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xoba2")
+
+[node name="RocketSocketArea3D" type="Area3D" parent="."]
+
+[node name="RocketSocketShape3D" type="CollisionShape3D" parent="RocketSocketArea3D"]
+shape = SubResource("SphereShape3D_3kder")

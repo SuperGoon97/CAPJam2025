@@ -3,7 +3,7 @@ extends ManagerBase
 
 signal all_managers_ready()
 
-var managers_to_load:Array[GVar.SUB_MANAGERS] = [GVar.SUB_MANAGERS.UI_MANAGER,GVar.SUB_MANAGERS.INPUT_MANAGER,]
+var managers_to_load:Array[GVar.SUB_MANAGERS] = [GVar.SUB_MANAGERS.UI_MANAGER,GVar.SUB_MANAGERS.INPUT_MANAGER,GVar.SUB_MANAGERS.BUILD_MANAGER]
 var manager_dict:Dictionary[GVar.SUB_MANAGERS,ManagerBase]
 var managers_ready_state_dict:Dictionary
 
@@ -22,9 +22,11 @@ var current_state : STATES
 
 func _ready() -> void:
 	create_sub_managers()
+	GVar.set("game_manager",self)
+	GVar.set("signal_bus",signal_bus)
+	GVar.set("ui_manager",manager_dict[GVar.SUB_MANAGERS.UI_MANAGER])
+	GVar.set("build_manager",manager_dict[GVar.SUB_MANAGERS.BUILD_MANAGER])
 	await all_managers_ready
-	GVar.set("active_game_manager",self)
-	GVar.set("active_signal_bus",signal_bus)
 	super()
 
 func create_sub_managers():

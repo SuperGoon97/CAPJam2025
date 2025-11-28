@@ -1,0 +1,23 @@
+class_name RocketBase extends RigidBody3D
+
+var _parent:RigidBody3D = null
+var _attached_socket:RocketSocketPoint
+
+@onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
+
+func _ready() -> void:
+	gravity_scale = 0.0
+
+func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint):
+	_parent = new_parent
+	_attached_socket = new_attached_socket
+	var direction_vec:Vector3 = Vector3(_attached_socket.global_position - _parent.global_position).normalized().round()
+	var half_rocket_bounds:Vector3 = rocket_collision_shape.shape.size
+	var position_mod = direction_vec * half_rocket_bounds
+	global_position = _parent.global_position + position_mod
+	
+	var new_joint:PinJoint3D = PinJoint3D.new()
+	add_child(new_joint)
+	new_joint.global_position = _attached_socket.global_position
+	new_joint.node_a = self.get_path()
+	new_joint.node_b = _parent.get_path()
