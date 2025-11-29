@@ -32,13 +32,13 @@ func _physics_process(delta: float) -> void:
 		var dif:float = _desired_z - position.z
 		position.z += pow(dif,2.0) * delta
 	if _look_at_mode:
-		var cntr_point:Vector3 = get_center_point()
-		look_at(cntr_point)
-		if cntr_point.y != global_position.y:
-			_target_y = cntr_point.y
+		look_at(root_rocket.global_position)
+		if root_rocket.global_position.y > global_position.y:
+			_target_y = root_rocket.global_position.y
 		if _target_y != global_position.y:
 			var dist = _target_y - global_position.y
 			global_position.y += dist * delta * 30.0
+
 func setup():
 	if root_rocket == null:
 		while root_rocket == null:

@@ -23,3 +23,5 @@ signal score_changed(new_score:int)
 signal rotate_cam_right
 @warning_ignore("unused_signal")
 signal rotate_cam_left
+@warning_ignore("unused_signal")
+signal rocket_root_height_changed(height:float)

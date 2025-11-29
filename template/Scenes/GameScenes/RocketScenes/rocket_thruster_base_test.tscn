@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="3_vihcf"]
 
 [node name="RocketThrusterBaseTest" instance=ExtResource("1_egyx3")]
-angular_damp = 30.0
 script = ExtResource("2_tertj")
-thrust_force = 1000.0
+thrust_force = 1500.0
 
 [node name="MeshInstance3D" parent="." index="1"]
 material_override = ExtResource("2_o568j")

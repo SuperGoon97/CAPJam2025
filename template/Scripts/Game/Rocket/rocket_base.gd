@@ -9,7 +9,8 @@ const CUSTOM_PIN_JOINT = preload("res://Scenes/Components/custom_pin_joint.tscn"
 var _parent:RigidBody3D = null
 var _attached_socket:RocketSocketPoint
 var _array_joints:Array[PinJoint3D]
-
+var _scoring_part = false
+var _launched = false
 @onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
 @onready var rocket_socket_check_area: Area3D = $RocketSocketCheckArea
 
@@ -17,12 +18,20 @@ func _ready() -> void:
 	if !GVar.signal_bus:
 		await GVar.scene_manager.game_ready
 	GVar.signal_bus.physics_enabled.connect(unfreeze)
+	if is_in_group("ShipRoot"):
+		_scoring_part = true
+		GVar.signal_bus.rocket_launch.connect(set_launched)
+
+func set_launched():
+	_launched = true
 
 func _physics_process(_delta: float) -> void:
-	for node in _array_joints:
-		if global_position.distance_to(node.global_position) > 1.0:
-			explode()
-
+	if _launched:
+		for node in _array_joints:
+			if global_position.distance_to(node.global_position) > 1.0:
+				explode()
+		if _scoring_part:
+			GVar.signal_bus.rocket_root_height_changed.emit(global_position.y)
 
 func explode():
 		for i in _array_joints.size():
@@ -31,7 +40,10 @@ func explode():
 			joint.call_deferred("queue_free")
 			
 
-func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint):
+func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:float):
+
+	mass = _mass
+
 	_parent = new_parent
 	_attached_socket = new_attached_socket
 	var direction_vec:Vector3 = Vector3(_attached_socket.global_position - _parent.global_position).normalized().round()
