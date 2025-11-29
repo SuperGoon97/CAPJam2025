@@ -9,7 +9,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_dudsn"]
 size = Vector3(1.1, 1.1, 1.1)
 
-[node name="RocketBase" type="RigidBody3D"]
+[node name="RocketBase" type="RigidBody3D" groups=["RocketPart"]]
 mass = 0.5
 center_of_mass_mode = 1
 inertia = Vector3(1, 1, 1)
@@ -24,6 +24,7 @@ shape = SubResource("BoxShape3D_kunfd")
 mesh = SubResource("BoxMesh_dudsn")
 
 [node name="RocketSocketCheckArea" type="Area3D" parent="."]
+input_ray_pickable = false
 
 [node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
 shape = SubResource("BoxShape3D_dudsn")

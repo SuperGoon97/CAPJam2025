@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b84amjk0syb81"]
+[gd_scene load_steps=11 format=3 uid="uid://b84amjk0syb81"]
 
 [ext_resource type="Script" uid="uid://8x0m53kjcw14" path="res://Scripts/Scene Management/scene_base_3d.gd" id="1_gosoi"]
 [ext_resource type="Script" uid="uid://5bngowlite7i" path="res://Scripts/Scene Management/world_origin.gd" id="2_nwiwi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://d03e7tlal2wwt" path="res://Assets/Materials/floor_material.tres" id="3_ln5ex"]
 [ext_resource type="Script" uid="uid://dwtfw48mq3nwf" path="res://Scripts/Game/Camera/camera_controller.gd" id="4_ot84h"]
 [ext_resource type="PackedScene" uid="uid://dq71jhoy1v8ij" path="res://Scenes/GameScenes/RocketScenes/rocket_body_test.tscn" id="6_t0qif"]
+[ext_resource type="Script" uid="uid://b3vpayynyeadx" path="res://Scripts/Game/Camera/main_camera.gd" id="6_xxass"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uumfr"]
 size = Vector2(100, 100)
@@ -38,16 +39,30 @@ shape = SubResource("BoxShape3D_ln5ex")
 environment = ExtResource("3_ah5qe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World Origin/Enviroment"]
-transform = Transform3D(0.68292964, 0.69741493, -0.21730065, 0, 0.29747483, 0.9547297, 0.7304842, -0.6520132, 0.20315439, -2.8322606, 7.8815365, 4.0341644)
+transform = Transform3D(0.70710677, 0.49999997, -0.5, 0, 0.70710677, 0.7071068, 0.70710677, -0.49999997, 0.5, -12.54874, 7.8815365, 13.663212)
+light_color = Color(0.89969856, 0.885531, 0.7715514, 1)
+light_energy = 4.0
+light_indirect_energy = 3.0
+light_angular_distance = 30.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="World Origin/Enviroment"]
+transform = Transform3D(-0.70710677, 0.49999997, 0.49999997, 0, 0.70710677, -0.70710677, -0.70710677, -0.49999997, -0.49999997, -0.14642048, 14.077632, -10.70248)
+light_color = Color(0.6901961, 0.78431374, 1, 1)
 light_energy = 4.0
 light_indirect_energy = 3.0
 light_angular_distance = 30.0
 
 [node name="CameraPivotPoint" type="Node3D" parent="World Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 script = ExtResource("4_ot84h")
 
 [node name="Main Camera" type="Camera3D" parent="World Origin/CameraPivotPoint" groups=["MainCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+script = ExtResource("6_xxass")
+
+[node name="CameraRotateCoolOff" type="Timer" parent="World Origin/CameraPivotPoint"]
+wait_time = 0.5
+one_shot = true
 
 [node name="UpperSceneCanvas" type="CanvasLayer" parent="."]
 script = ExtResource("3_4ppc3")
@@ -58,7 +73,7 @@ script = ExtResource("3_4ppc3")
 _layer = 4
 
 [node name="RocketBase" parent="." groups=["ShipRoot"] instance=ExtResource("6_t0qif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014885187, 3.4971278, -0.00085929036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 mass = 1.0
 center_of_mass_mode = 0
 inertia = Vector3(0, 0, 0)

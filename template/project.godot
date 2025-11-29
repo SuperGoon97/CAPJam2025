@@ -41,6 +41,7 @@ enabled=PackedStringArray()
 "UI Manager"=""
 MainCamera=""
 ShipRoot=""
+RocketPart=""
 
 [input]
 
