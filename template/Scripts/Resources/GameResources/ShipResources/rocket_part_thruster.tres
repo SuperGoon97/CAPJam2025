@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RocketPartResource" load_steps=3 format=3 uid="uid://b2oqjq5cdwcu1"]
+
+[ext_resource type="Texture2D" uid="uid://bun37tput6xu1" path="res://Assets/Sprites/t_ui_icon_fuel.png" id="1_r3mbp"]
+[ext_resource type="Script" uid="uid://b4ynbiek7cbdq" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_resource.gd" id="2_l8css"]
+
+[resource]
+script = ExtResource("2_l8css")
+scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_thruster_base_test.tscn"
+icon = ExtResource("1_r3mbp")
+cost = 500
+metadata/_custom_type_script = "uid://b4ynbiek7cbdq"

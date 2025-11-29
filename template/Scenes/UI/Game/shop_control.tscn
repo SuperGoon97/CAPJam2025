@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b65ptox7c8pai"]
+[gd_scene load_steps=6 format=3 uid="uid://b65ptox7c8pai"]
 
-[ext_resource type="Script" uid="uid://c5cdl1naw77lt" path="res://Scripts/UI/Buttons/shop_button.gd" id="1_7g370"]
-[ext_resource type="Resource" uid="uid://cpujqdhgm87q3" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_body_test.tres" id="2_8n5a4"]
+[ext_resource type="PackedScene" uid="uid://btv1j6rkn1x0x" path="res://Scenes/UI/Game/shop_button.tscn" id="1_7g370"]
+[ext_resource type="Resource" uid="uid://cx5fvl3gysa2a" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_block.tres" id="2_3btdd"]
+[ext_resource type="Resource" uid="uid://b2oqjq5cdwcu1" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_thruster.tres" id="3_ur22g"]
+[ext_resource type="Resource" uid="uid://ovys61sx81ta" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_fuel.tres" id="4_culsl"]
+[ext_resource type="Resource" uid="uid://h5rcays0b5hs" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_cone.tres" id="5_k1wb0"]
 
 [node name="ShopControl" type="Control"]
 layout_mode = 3
@@ -10,72 +13,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 175.0
+offset_bottom = 568.0
 
 [node name="Button1Holder" type="Control" parent="VSplitContainer"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
-[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder"]
+[node name="Button1" parent="VSplitContainer/Button1Holder" instance=ExtResource("1_7g370")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-script = ExtResource("1_7g370")
-rocket_resource = ExtResource("2_8n5a4")
-metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+rocket_resource = ExtResource("2_3btdd")
 
 [node name="Button1Holder2" type="Control" parent="VSplitContainer"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
-[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder2"]
+[node name="Button1" parent="VSplitContainer/Button1Holder2" instance=ExtResource("1_7g370")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-script = ExtResource("1_7g370")
-metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+rocket_resource = ExtResource("3_ur22g")
 
 [node name="Button1Holder3" type="Control" parent="VSplitContainer"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
-[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder3"]
+[node name="Button1" parent="VSplitContainer/Button1Holder3" instance=ExtResource("1_7g370")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-script = ExtResource("1_7g370")
-metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+rocket_resource = ExtResource("4_culsl")
 
 [node name="Button1Holder4" type="Control" parent="VSplitContainer"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
 
-[node name="Button1" type="Button" parent="VSplitContainer/Button1Holder4"]
+[node name="Button1" parent="VSplitContainer/Button1Holder4" instance=ExtResource("1_7g370")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-script = ExtResource("1_7g370")
-metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+rocket_resource = ExtResource("5_k1wb0")
