@@ -66,5 +66,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_jfobj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vhgnh")
 value = 50.0
 fill_mode = 3
-show_percentage = false
 script = ExtResource("2_vhgnh")
