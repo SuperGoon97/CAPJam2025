@@ -1,8 +1,9 @@
+res://Scripts/UI/Shop
+res://Scenes/UI/Game
 res://Scripts/Game/Rocket
 res://Assets/Materials
 res://Scenes/GameScenes/RocketScenes
 res://Scripts/Resources/GameResources/ShipResources
-res://Scenes/UI/Game
 res://Scripts/Resources/Enviroments
 res://
 res://Scenes/Components
