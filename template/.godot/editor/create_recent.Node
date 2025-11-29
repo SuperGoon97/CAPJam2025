@@ -1,3 +1,5 @@
+Label
+ButtonBase
 Generic6DOFJoint3D
 Node3D
 RocketSocketPoint
@@ -10,6 +12,3 @@ Area3D
 MeshInstance3D
 VBoxContainer
 Control
-VSplitContainer
-Node
-DirectionalLight3D

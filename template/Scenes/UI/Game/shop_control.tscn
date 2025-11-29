@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b65ptox7c8pai"]
+[gd_scene load_steps=9 format=3 uid="uid://b65ptox7c8pai"]
 
 [ext_resource type="PackedScene" uid="uid://btv1j6rkn1x0x" path="res://Scenes/UI/Game/shop_button.tscn" id="1_7g370"]
+[ext_resource type="Script" uid="uid://be3r6h0jmfdm6" path="res://Scripts/UI/Shop/shop_control.gd" id="1_k1wb0"]
 [ext_resource type="Resource" uid="uid://cx5fvl3gysa2a" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_block.tres" id="2_3btdd"]
 [ext_resource type="Resource" uid="uid://b2oqjq5cdwcu1" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_thruster.tres" id="3_ur22g"]
 [ext_resource type="Resource" uid="uid://ovys61sx81ta" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_fuel.tres" id="4_culsl"]
 [ext_resource type="Resource" uid="uid://h5rcays0b5hs" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_cone.tres" id="5_k1wb0"]
+[ext_resource type="Script" uid="uid://bavouk4ls6rm" path="res://Scripts/UI/Shop/shop_current_score.gd" id="6_ur22g"]
+[ext_resource type="PackedScene" uid="uid://cdtd5iwd0f8tv" path="res://Scenes/UI/Game/shop_goButton.tscn" id="7_culsl"]
 
 [node name="ShopControl" type="Control"]
 layout_mode = 3
@@ -14,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_k1wb0")
 
 [node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -61,3 +65,32 @@ size_flags_vertical = 6
 [node name="Button1" parent="VSplitContainer/Button1Holder4" instance=ExtResource("1_7g370")]
 layout_mode = 1
 rocket_resource = ExtResource("5_k1wb0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 181.0
+offset_top = -7.0
+offset_right = 443.0
+offset_bottom = 129.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 13
+theme_override_constants/shadow_outline_size = 13
+theme_override_font_sizes/font_size = 64
+text = "$4000"
+vertical_alignment = 1
+script = ExtResource("6_ur22g")
+
+[node name="ButtonBase" parent="." instance=ExtResource("7_culsl")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -443.0
+offset_top = -207.0
+offset_right = -22.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 0
