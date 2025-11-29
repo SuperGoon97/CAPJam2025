@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://vi51gqxss6t"]
 
-[ext_resource type="Script" uid="uid://g4twyce6scf3" path="res://Scripts/Game/Rocket/rocket_base.gd" id="1_dudsn"]
-[ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_mlwr4"]
+[ext_resource type="Script" uid="uid://g4twyce6scf3" path="res://Scripts/Game/Rocket/rocket_root.gd" id="1_k7mrb"]
+[ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_hxdxv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mlwr4"]
 rough = true
@@ -13,16 +13,14 @@ rough = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_dudsn"]
 size = Vector3(1.01, 1.01, 1.01)
 
-[node name="RocketBase" type="RigidBody3D" groups=["RocketPart"]]
+[node name="RocketRoot" type="RigidBody3D" groups=["RocketPart"]]
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_mlwr4")
 gravity_scale = 0.33
-center_of_mass_mode = 1
-center_of_mass = Vector3(0, -0.1, 0)
-inertia = Vector3(100, 100, 100)
+inertia = Vector3(10, 10, 10)
 freeze = true
 angular_damp = 30.0
-script = ExtResource("1_dudsn")
+script = ExtResource("1_k7mrb")
 
 [node name="RocketCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kunfd")
@@ -31,7 +29,7 @@ shape = SubResource("BoxShape3D_kunfd")
 mesh = SubResource("BoxMesh_dudsn")
 
 [node name="RocketSocketCheckArea" type="Area3D" parent="."]
-script = ExtResource("2_mlwr4")
+script = ExtResource("2_hxdxv")
 
 [node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
 shape = SubResource("BoxShape3D_dudsn")

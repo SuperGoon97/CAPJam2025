@@ -12,7 +12,7 @@ var max_pos_z:float = 0.0
 var max_mpos_z:float = 0.0
 var z_dif:float = 0.0
 
-var root_rocket:RocketBase = null
+var root_rocket:RocketRoot = null
 
 var _look_at_mode:bool = false
 var _target_y:float = 0.0

@@ -6,7 +6,7 @@
 [ext_resource type="Environment" uid="uid://lv771tblxdxi" path="res://Scripts/Resources/Enviroments/default_enviroment.tres" id="3_ah5qe"]
 [ext_resource type="Material" uid="uid://d03e7tlal2wwt" path="res://Assets/Materials/floor_material.tres" id="3_ln5ex"]
 [ext_resource type="Script" uid="uid://dwtfw48mq3nwf" path="res://Scripts/Game/Camera/camera_controller.gd" id="4_ot84h"]
-[ext_resource type="PackedScene" uid="uid://dq71jhoy1v8ij" path="res://Scenes/GameScenes/RocketScenes/rocket_body_test.tscn" id="6_t0qif"]
+[ext_resource type="PackedScene" uid="uid://dq71jhoy1v8ij" path="res://Scenes/GameScenes/RocketScenes/rocket_root_with_sockets.tscn" id="6_t0qif"]
 [ext_resource type="Script" uid="uid://b3vpayynyeadx" path="res://Scripts/Game/Camera/main_camera.gd" id="6_xxass"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uumfr"]

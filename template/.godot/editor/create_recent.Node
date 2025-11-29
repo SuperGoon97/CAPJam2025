@@ -1,3 +1,5 @@
+Node3D
+CollisionShape3D
 Label
 Control
 Generic6DOFJoint3D
@@ -7,9 +9,6 @@ ButtonBase
 HBoxContainer
 VBoxContainer
 Timer
-CollisionShape3D
 Area3D
-Node3D
 RocketSocketPoint
 ConeTwistJoint3D
-StaticBody3D

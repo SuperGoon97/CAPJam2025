@@ -19,7 +19,7 @@ func _ready() -> void:
 	GVar.signal_bus.rotate_cam_right.connect(_rotate_right_clicked)
 	child_cam = get_tree().get_first_node_in_group("MainCamera")
 	var node = get_tree().get_first_node_in_group("ShipRoot")
-	if node is RocketBase:
+	if node is RocketRoot:
 		desired_position = node.global_position
 
 func _physics_process(delta: float) -> void:

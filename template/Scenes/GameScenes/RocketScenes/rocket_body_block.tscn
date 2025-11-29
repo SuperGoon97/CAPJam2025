@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://6ua5qhkgsdlg"]
+
+[ext_resource type="Script" uid="uid://fq8hqk0bfji1" path="res://Scripts/Game/Rocket/rocket_part.gd" id="1_rvr5u"]
+[ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_ev4du"]
+[ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_xcyed"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvr5u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
+size = Vector3(1.01, 1.01, 1.01)
+
+[node name="RocketBodyBlock" type="CollisionShape3D" groups=["RocketPart"]]
+shape = SubResource("BoxShape3D_vbojs")
+script = ExtResource("1_rvr5u")
+
+[node name="RocketSocketPoint" parent="." instance=ExtResource("2_xcyed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.52591693)
+
+[node name="RocketSocketPoint2" parent="." instance=ExtResource("2_xcyed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5293146)
+
+[node name="RocketSocketPoint3" parent="." instance=ExtResource("2_xcyed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51826733, 0.005548835)
+
+[node name="RocketSocketPoint4" parent="." instance=ExtResource("2_xcyed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5224347, 0, 0.0019210577)
+
+[node name="RocketSocketPoint5" parent="." instance=ExtResource("2_xcyed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)
+
+[node name="RocketSocketPoint6" parent="." instance=ExtResource("2_xcyed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5218751, 0, -0.004120946)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rvr5u")
+
+[node name="RocketSocketCheckArea" type="Area3D" parent="."]
+script = ExtResource("2_ev4du")
+
+[node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
+shape = SubResource("BoxShape3D_qhk5o")
+debug_color = Color(0.32697475, 0.6241081, 3.85046e-07, 0.41960785)

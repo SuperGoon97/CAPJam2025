@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_l8css")
-scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_thruster_base_test.tscn"
+scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_part_thruster.tscn"
 icon = ExtResource("1_r3mbp")
 cost = 500
 metadata/_custom_type_script = "uid://b4ynbiek7cbdq"

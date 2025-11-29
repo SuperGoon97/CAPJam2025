@@ -1,4 +1,4 @@
-class_name RocketBase extends RigidBody3D
+class_name RocketRoot extends RigidBody3D
 
 signal do_socket_overlap_check
 
@@ -50,7 +50,7 @@ func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:fl
 	_attached_socket = new_attached_socket
 	var direction_vec:Vector3 = Vector3(_attached_socket.global_position - _parent.global_position).normalized().round()
 	var half_rocket_bounds:Vector3 = rocket_collision_shape.shape.size
-	var position_mod:Vector3 = (direction_vec * half_rocket_bounds * 1.01)
+	var position_mod:Vector3 = (direction_vec * half_rocket_bounds * 1.025)
 	global_position = _parent.global_position + position_mod
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -76,7 +76,7 @@ func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:fl
 func area_left_clicked():
 	var children:Array[Node] = get_children()
 	for child in children:
-		if child is RocketBase:
+		if child is RocketPart:
 			return
 	if do_once_sold:
 		GVar.signal_bus.rocket_part_sold.emit(self)

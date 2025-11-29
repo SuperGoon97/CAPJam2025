@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://ypps07vkid4w"]
+
+[ext_resource type="Script" uid="uid://brc0amh3blr0r" path="res://Scripts/Game/Rocket/rocket_thruster.gd" id="1_brtww"]
+[ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_brtww"]
+[ext_resource type="Material" uid="uid://ce2t062ttaiji" path="res://Assets/Materials/thruster_material.tres" id="3_brtww"]
+[ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="3_jarix"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rvr5u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
+size = Vector3(1.01, 1.01, 1.01)
+
+[node name="RocketBodyBlock" type="CollisionShape3D" groups=["RocketPart"]]
+shape = SubResource("BoxShape3D_vbojs")
+script = ExtResource("1_brtww")
+
+[node name="RocketSocketPoint3" parent="." instance=ExtResource("2_brtww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51826733, 0.005548835)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_brtww")
+mesh = SubResource("BoxMesh_rvr5u")
+
+[node name="RocketSocketCheckArea" type="Area3D" parent="."]
+script = ExtResource("3_jarix")
+
+[node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
+shape = SubResource("BoxShape3D_qhk5o")
+debug_color = Color(0.32697475, 0.6241081, 3.85046e-07, 0.41960785)
+
+[node name="ThrustPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67567927, 0)

@@ -12,7 +12,7 @@ signal player_grabbed_rocket_part_from_shop(rocket_part:RocketPartResource)
 @warning_ignore("unused_signal")
 signal rocket_part_added
 @warning_ignore("unused_signal")
-signal rocket_part_sold(rocket_part:RocketBase)
+signal rocket_part_sold(rocket_part:RocketPart)
 @warning_ignore("unused_signal")
 signal player_release_left_click
 @warning_ignore("unused_signal")

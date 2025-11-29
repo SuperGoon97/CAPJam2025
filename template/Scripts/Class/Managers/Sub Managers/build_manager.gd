@@ -58,20 +58,20 @@ func mouse_exit_socket():
 	_hovered_socket = null
 	pass
 
-func socket_clicked(socket:RocketSocketPoint):
+func socket_clicked(_socket:RocketSocketPoint):
 	if _player_held_rocket_bit:
 		var scene_path:String = _player_held_rocket_bit.scene_path_string
 		var scene:PackedScene = load(scene_path)
-		var new_rocket_part:RocketBase = scene.instantiate()
-		var socket_parent:RigidBody3D = socket.get_parent()
+		var new_rocket_part:RocketPart = scene.instantiate()
+		var ship_root = get_tree().get_first_node_in_group("ShipRoot")
 		current_score -= _player_held_rocket_bit.cost
-		socket_parent.add_child(new_rocket_part)
-		new_rocket_part.owner = get_tree().get_first_node_in_group("ShipRoot")
+		ship_root.add_child(new_rocket_part)
+		new_rocket_part.owner = ship_root
 		new_rocket_part.resource_data = _player_held_rocket_bit
-		new_rocket_part.setup(socket_parent,socket,_player_held_rocket_bit.mass)
+		new_rocket_part.setup(_socket)
 		GVar.signal_bus.rocket_part_added.emit()
 
-func rocket_part_sold(rocket_part:RocketBase):
+func rocket_part_sold(rocket_part:RocketPart):
 	print("sold")
 	current_score += rocket_part.resource_data.cost
 	rocket_part.call_deferred("queue_free")
