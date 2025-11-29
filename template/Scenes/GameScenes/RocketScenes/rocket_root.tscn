@@ -17,7 +17,6 @@ size = Vector3(1.01, 1.01, 1.01)
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_mlwr4")
 gravity_scale = 0.33
-inertia = Vector3(10, 10, 10)
 freeze = true
 angular_damp = 30.0
 script = ExtResource("1_k7mrb")

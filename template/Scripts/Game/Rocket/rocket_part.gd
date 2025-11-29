@@ -5,6 +5,7 @@ signal do_socket_overlap_check
 var do_once_sold:bool = true
 var resource_data:RocketPartResource
 @onready var rocket_socket_check_area: RocketArea3D = $RocketSocketCheckArea
+
 func _ready() -> void:
 	if !GVar.signal_bus:
 		await GVar.scene_manager.game_ready
@@ -33,14 +34,6 @@ func setup(attached_socket:RocketSocketPoint):
 			if !area_parent.get_parent() == self:
 				overlapping_sockets.push_back(area.get_parent())
 	for socket in overlapping_sockets:
-		#var new_joint:PinJoint3D = CUSTOM_PIN_JOINT.instantiate()
-		#socket.get_parent().add_child(new_joint)
-		#new_joint.exclude_nodes_from_collision = false
-		#new_joint.global_position = socket.global_position
-		#new_joint.node_a = socket.get_parent().get_path()
-		#new_joint.node_b = self.get_path()
-		#_array_joints.push_back(new_joint)
-		#print_rich("[color=blue]"+str(_array_joints)+"[/color]")
 		socket.set_socket_enabled(false)
 	do_socket_overlap_check.emit()
 

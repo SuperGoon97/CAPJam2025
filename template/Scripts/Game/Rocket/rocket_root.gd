@@ -11,6 +11,15 @@ var _attached_socket:RocketSocketPoint
 var _array_joints:Array[PinJoint3D]
 var _scoring_part:bool = false
 var _launched:bool = false
+
+var _total_fuel:float = 0.0
+var current_fuel:float = 0.0:
+	set(value):
+		current_fuel = value
+		current_fuel_percentage = current_fuel/_total_fuel
+		print_rich("[color=brown] current fuel = " + str(current_fuel) + " %" + str(current_fuel_percentage) +"[/color]")
+var current_fuel_percentage:float = 0.0
+
 var do_once_sold:bool = true
 var resource_data:RocketPartResource
 @onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
@@ -19,6 +28,7 @@ var resource_data:RocketPartResource
 func _ready() -> void:
 	if !GVar.signal_bus:
 		await GVar.scene_manager.game_ready
+	GVar.signal_bus.rocket_tank_added.connect(fuel_tank_added)
 	GVar.signal_bus.physics_enabled.connect(unfreeze)
 	if is_in_group("ShipRoot"):
 		_scoring_part = true
@@ -26,7 +36,14 @@ func _ready() -> void:
 	else:
 		rocket_socket_check_area.area_left_clicked.connect(area_left_clicked)
 
+func fuel_tank_added(fuel:float):
+	_total_fuel += fuel
+
+func fuel_tank_removed(fuel:float):
+	_total_fuel -= fuel
+
 func set_launched():
+	current_fuel = _total_fuel
 	_launched = true
 
 func _physics_process(_delta: float) -> void:
