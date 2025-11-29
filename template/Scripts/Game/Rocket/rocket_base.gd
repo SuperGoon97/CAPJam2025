@@ -41,27 +41,22 @@ func explode():
 			
 
 func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:float):
-
 	mass = _mass
-
 	_parent = new_parent
 	_attached_socket = new_attached_socket
 	var direction_vec:Vector3 = Vector3(_attached_socket.global_position - _parent.global_position).normalized().round()
 	var half_rocket_bounds:Vector3 = rocket_collision_shape.shape.size
 	var position_mod:Vector3 = (direction_vec * half_rocket_bounds * 1.01)
 	global_position = _parent.global_position + position_mod
-	
 	await get_tree().physics_frame
-	
+	await get_tree().physics_frame
 	var overlapping_areas_array:Array[Area3D] = rocket_socket_check_area.get_overlapping_areas()
 	var overlapping_sockets:Array[RocketSocketPoint]
-	
 	for area in overlapping_areas_array:
 		var area_parent = area.get_parent()
 		if area_parent is RocketSocketPoint:
 			if !area_parent.get_parent() == self:
 				overlapping_sockets.push_back(area.get_parent())
-	
 	for socket in overlapping_sockets:
 		var new_joint:PinJoint3D = CUSTOM_PIN_JOINT.instantiate()
 		socket.get_parent().add_child(new_joint)

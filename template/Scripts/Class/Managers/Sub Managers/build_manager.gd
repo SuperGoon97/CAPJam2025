@@ -14,11 +14,13 @@ var highscore_height_int:int = 0:
 	set(value):
 		max_score += abs(highscore_height_int - value)
 		highscore_height_int = value
-		print_rich("[color=gold] new highscore height = "+ str(highscore_height_int) + "[/color]")
+		GVar.signal_bus.highscore_height_changed.emit(current_height)
+		#print_rich("[color=gold] new highscore height = "+ str(highscore_height_int) + "[/color]")
 
 var current_height:float = 0.0:
 	set(value):
 		current_height = value
+		GVar.signal_bus.current_height_changed.emit(current_height)
 		if current_height > highscore_height:
 			highscore_height = current_height
 
@@ -26,7 +28,7 @@ var max_score:int:
 	set(value):
 		current_score += value - max_score
 		max_score = value
-		print("[color=orange] new maxscore = " + str(max_score) + "[/color]")
+		#print("[color=orange] new maxscore = " + str(max_score) + "[/color]")
 
 var current_score:int:
 	set(value):
