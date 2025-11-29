@@ -75,8 +75,3 @@ _layer = 4
 
 [node name="RocketBase" parent="." groups=["ShipRoot"] instance=ExtResource("6_t0qif")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
-mass = 1.0
-center_of_mass_mode = 0
-center_of_mass = Vector3(0, 0, 0)
-inertia = Vector3(0, 0, 0)
-angular_damp = 0.0

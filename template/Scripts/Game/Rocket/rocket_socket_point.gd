@@ -13,6 +13,7 @@ func _ready() -> void:
 	GVar.signal_bus.rocket_part_added.connect(_request_visibility_change.bind(false))
 	GVar.signal_bus.player_right_click.connect(_request_visibility_change.bind(false))
 	GVar.signal_bus.player_release_left_click.connect(_request_visibility_change.bind(false))
+	GVar.signal_bus.rocket_part_sold.connect(_overlap_check)
 	_request_visibility_change(false)
 	var rocket_parent:RocketBase = get_parent()
 	rocket_parent.do_socket_overlap_check.connect(_overlap_check)
@@ -37,11 +38,16 @@ func _request_visibility_change(state:bool):
 func _player_grabbed_rocket_part_from_shop(_args):
 	_request_visibility_change(true)
 
-func _overlap_check():
+func _overlap_check(..._args):
+	rocket_socket_area_3d.set_deferred("monitoring",true)
+	rocket_socket_area_3d.set_deferred("monitorable",true)
+	await get_tree().physics_frame
 	var overlapping_areas:Array[Area3D] = rocket_socket_area_3d.get_overlapping_areas()
 	for area in overlapping_areas:
 		if area.get_parent() is RocketBase and area.get_parent() != get_parent():
 			if _socket_enabled:
+				rocket_socket_area_3d.set_deferred("monitoring",false)
+				rocket_socket_area_3d.set_deferred("monitorable",false)
 				set_socket_enabled(false)
 				return
 	if !_socket_enabled:
@@ -50,13 +56,11 @@ func _overlap_check():
 func set_socket_enabled(state:bool):
 	_socket_enabled = state
 	if state == true:
-		visible = true
 		set_area_monitor_state(true)
 		if !rocket_socket_area_3d.mouse_entered.is_connected(_on_mouse_entered_area):
 			rocket_socket_area_3d.mouse_entered.connect(_on_mouse_entered_area)
 			rocket_socket_area_3d.mouse_exited.connect(_on_mouse_exited_area)
 	else:
-		visible = false
 		set_area_monitor_state(false)
 		if rocket_socket_area_3d.mouse_entered.is_connected(_on_mouse_entered_area):
 			rocket_socket_area_3d.mouse_entered.disconnect(_on_mouse_entered_area)
