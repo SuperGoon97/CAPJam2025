@@ -2,9 +2,11 @@ class_name MouseFollowingTextureRect extends TextureRect
 
 func _init(_texture:CompressedTexture2D):
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	mouse_behavior_recursive = Control.MOUSE_BEHAVIOR_DISABLED
 	texture = _texture
 	GVar.signal_bus.rocket_part_added.connect(_destroy)
 	GVar.signal_bus.player_right_click.connect(_destroy)
+	GVar.signal_bus.player_release_left_click.connect(_destroy)
 
 func _physics_process(_delta: float) -> void:
 	global_position = get_global_mouse_position()

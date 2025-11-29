@@ -1,5 +1,4 @@
 [gd_scene format=3 uid="uid://d0tc0pq2bcftx"]
 
 [node name="CustomPinJoint" type="PinJoint3D"]
-params/bias = 0.75
 params/damping = 3.0

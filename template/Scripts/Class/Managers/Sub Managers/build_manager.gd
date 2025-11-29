@@ -61,6 +61,7 @@ func socket_clicked(socket:RocketSocketPoint):
 		var scene:PackedScene = load(scene_path)
 		var new_rocket_part:RocketBase = scene.instantiate()
 		var socket_parent:RigidBody3D = socket.get_parent()
+		current_score -= _player_held_rocket_bit.cost
 		socket_parent.add_child(new_rocket_part)
 		new_rocket_part.owner = get_tree().get_first_node_in_group("ShipRoot")
 		new_rocket_part.setup(socket_parent,socket,_player_held_rocket_bit.mass)
@@ -68,7 +69,10 @@ func socket_clicked(socket:RocketSocketPoint):
 
 func right_click_handler():
 	if _player_held_rocket_bit:
-		current_score += _player_held_rocket_bit.cost
+		set_player_held_rocket_bit(null)
+
+func left_click_released_handler():
+	if _player_held_rocket_bit:
 		set_player_held_rocket_bit(null)
 
 func set_player_held_rocket_bit(rocket_bit:RocketPartResource):

@@ -7,9 +7,13 @@ var bus = &"SFX"
 
 func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exit)
+	button_down.connect(_button_down)
 	sound_array = []
 	pass
-	
+
+func _button_down() -> void:
+	pass
+
 func _pressed() -> void:
 	if sound_array.size() == 0: return
 	GSound.play_sound_main_camera(sound_array.pick_random(),bus)
