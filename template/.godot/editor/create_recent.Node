@@ -1,3 +1,5 @@
+CollisionShape3D
+Area3D
 Generic6DOFJoint3D
 Node3D
 RocketSocketPoint
@@ -5,11 +7,8 @@ ConeTwistJoint3D
 PinJoint3D
 StaticBody3D
 RigidBody3D
-CollisionShape3D
-Area3D
 MeshInstance3D
 VBoxContainer
 Control
 VSplitContainer
 Node
-DirectionalLight3D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://vi51gqxss6t"]
+[gd_scene load_steps=5 format=3 uid="uid://vi51gqxss6t"]
 
 [ext_resource type="Script" uid="uid://g4twyce6scf3" path="res://Scripts/Game/Rocket/rocket_base.gd" id="1_dudsn"]
 
@@ -6,10 +6,14 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_dudsn"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dudsn"]
+size = Vector3(1.1, 1.1, 1.1)
+
 [node name="RocketBase" type="RigidBody3D"]
 mass = 0.5
 center_of_mass_mode = 1
 inertia = Vector3(1, 1, 1)
+freeze = true
 angular_damp = 10.0
 script = ExtResource("1_dudsn")
 
@@ -18,3 +22,9 @@ shape = SubResource("BoxShape3D_kunfd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_dudsn")
+
+[node name="RocketSocketCheckArea" type="Area3D" parent="."]
+
+[node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
+shape = SubResource("BoxShape3D_dudsn")
+debug_color = Color(0.32697475, 0.6241081, 3.85046e-07, 0.41960785)
