@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b65ptox7c8pai"]
+[gd_scene load_steps=10 format=3 uid="uid://b65ptox7c8pai"]
 
 [ext_resource type="PackedScene" uid="uid://btv1j6rkn1x0x" path="res://Scenes/UI/Game/shop_button.tscn" id="1_7g370"]
 [ext_resource type="Script" uid="uid://be3r6h0jmfdm6" path="res://Scripts/UI/Shop/shop_control.gd" id="1_k1wb0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://h5rcays0b5hs" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_cone.tres" id="5_k1wb0"]
 [ext_resource type="Script" uid="uid://bavouk4ls6rm" path="res://Scripts/UI/Shop/shop_current_score.gd" id="6_ur22g"]
 [ext_resource type="PackedScene" uid="uid://cdtd5iwd0f8tv" path="res://Scenes/UI/Game/shop_goButton.tscn" id="7_culsl"]
+[ext_resource type="Script" uid="uid://dl0voif1yqy05" path="res://Scripts/UI/Shop/button_rot.gd" id="9_k706b"]
 
 [node name="ShopControl" type="Control"]
 layout_mode = 3
@@ -94,3 +95,42 @@ offset_right = -22.0
 offset_bottom = -37.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="ArrowContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 60.0
+offset_right = -49.0
+offset_bottom = 194.0
+grow_horizontal = 0
+
+[node name="Button_Rot" type="Button" parent="ArrowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+script = ExtResource("9_k706b")
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+
+[node name="TextureRect" type="TextureRect" parent="ArrowContainer/Button_Rot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button_Rot2" type="Button" parent="ArrowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+script = ExtResource("9_k706b")
+rotate_right = true
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+
+[node name="TextureRect" type="TextureRect" parent="ArrowContainer/Button_Rot2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="ArrowContainer/Button_Rot" to="ArrowContainer/Button_Rot" method="_on_pressed"]
+[connection signal="pressed" from="ArrowContainer/Button_Rot2" to="ArrowContainer/Button_Rot2" method="_on_pressed"]

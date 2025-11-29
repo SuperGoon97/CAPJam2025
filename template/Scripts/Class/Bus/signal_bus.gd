@@ -19,3 +19,7 @@ signal rocket_launch
 signal physics_enabled
 @warning_ignore("unused_signal")
 signal score_changed(new_score:int)
+@warning_ignore("unused_signal")
+signal rotate_cam_right
+@warning_ignore("unused_signal")
+signal rotate_cam_left
