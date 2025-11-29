@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx32k68atdmxd"]
+[gd_scene load_steps=5 format=3 uid="uid://cx32k68atdmxd"]
 
 [ext_resource type="Script" uid="uid://dwiu27w0ge27m" path="res://Scripts/UI/ui_in_game.gd" id="1_jfobj"]
+[ext_resource type="Script" uid="uid://dvuqacg71gkk3" path="res://Scripts/UI/Game/fuel_progress_bar.gd" id="2_vhgnh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfobj"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.85700005)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhgnh"]
+bg_color = Color(0.9817832, 0.34111598, 0.456863, 1)
+border_width_left = 8
+border_width_top = 4
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.91700006)
 
 [node name="InGameControl" type="Control"]
 layout_mode = 3
@@ -30,3 +49,22 @@ theme_override_constants/shadow_outline_size = 27
 theme_override_font_sizes/font_size = 72
 text = "2500m"
 horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -142.0
+offset_top = 30.0
+offset_right = -32.0
+offset_bottom = 316.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+theme_override_styles/background = SubResource("StyleBoxFlat_jfobj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vhgnh")
+value = 50.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("2_vhgnh")
