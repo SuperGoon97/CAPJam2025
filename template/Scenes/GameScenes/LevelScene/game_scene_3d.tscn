@@ -55,6 +55,7 @@ light_angular_distance = 30.0
 [node name="CameraPivotPoint" type="Node3D" parent="World Origin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 script = ExtResource("4_ot84h")
+rotation_angle = 45.0
 
 [node name="Main Camera" type="Camera3D" parent="World Origin/CameraPivotPoint" groups=["MainCamera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
