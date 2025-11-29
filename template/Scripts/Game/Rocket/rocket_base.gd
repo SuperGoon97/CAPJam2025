@@ -9,10 +9,12 @@ const CUSTOM_PIN_JOINT = preload("res://Scenes/Components/custom_pin_joint.tscn"
 var _parent:RigidBody3D = null
 var _attached_socket:RocketSocketPoint
 var _array_joints:Array[PinJoint3D]
-var _scoring_part = false
-var _launched = false
+var _scoring_part:bool = false
+var _launched:bool = false
+var do_once_sold:bool = true
+var resource_data:RocketPartResource
 @onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
-@onready var rocket_socket_check_area: Area3D = $RocketSocketCheckArea
+@onready var rocket_socket_check_area: RocketArea3D = $RocketSocketCheckArea
 
 func _ready() -> void:
 	if !GVar.signal_bus:
@@ -21,6 +23,8 @@ func _ready() -> void:
 	if is_in_group("ShipRoot"):
 		_scoring_part = true
 		GVar.signal_bus.rocket_launch.connect(set_launched)
+	else:
+		rocket_socket_check_area.area_left_clicked.connect(area_left_clicked)
 
 func set_launched():
 	_launched = true
@@ -68,6 +72,15 @@ func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:fl
 		print_rich("[color=blue]"+str(_array_joints)+"[/color]")
 		socket.set_socket_enabled(false)
 	do_socket_overlap_check.emit()
+
+func area_left_clicked():
+	var children:Array[Node] = get_children()
+	for child in children:
+		if child is RocketBase:
+			return
+	if do_once_sold:
+		GVar.signal_bus.rocket_part_sold.emit(self)
+		do_once_sold = !do_once_sold
 
 func unfreeze():
 	set_deferred("freeze",false)

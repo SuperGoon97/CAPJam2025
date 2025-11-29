@@ -43,6 +43,7 @@ func _game_ready():
 	GVar.signal_bus.rocket_part_added.connect(set_player_held_rocket_bit.bind(null))
 	GVar.signal_bus.player_right_click.connect(right_click_handler)
 	GVar.signal_bus.rocket_root_height_changed.connect(set_current_height)
+	GVar.signal_bus.rocket_part_sold.connect(rocket_part_sold)
 	max_score += starting_score
 	pass
 
@@ -66,8 +67,15 @@ func socket_clicked(socket:RocketSocketPoint):
 		current_score -= _player_held_rocket_bit.cost
 		socket_parent.add_child(new_rocket_part)
 		new_rocket_part.owner = get_tree().get_first_node_in_group("ShipRoot")
+		new_rocket_part.resource_data = _player_held_rocket_bit
 		new_rocket_part.setup(socket_parent,socket,_player_held_rocket_bit.mass)
 		GVar.signal_bus.rocket_part_added.emit()
+
+func rocket_part_sold(rocket_part:RocketBase):
+	print("sold")
+	current_score += rocket_part.resource_data.cost
+	rocket_part.call_deferred("queue_free")
+	pass
 
 func right_click_handler():
 	if _player_held_rocket_bit:

@@ -1,16 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://vi51gqxss6t"]
+[gd_scene load_steps=7 format=3 uid="uid://vi51gqxss6t"]
 
 [ext_resource type="Script" uid="uid://g4twyce6scf3" path="res://Scripts/Game/Rocket/rocket_base.gd" id="1_dudsn"]
+[ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_mlwr4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mlwr4"]
+rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kunfd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_dudsn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dudsn"]
-size = Vector3(1.1, 1.1, 1.1)
+size = Vector3(1.01, 1.01, 1.01)
 
 [node name="RocketBase" type="RigidBody3D" groups=["RocketPart"]]
 mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_mlwr4")
+gravity_scale = 0.33
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.1, 0)
 inertia = Vector3(100, 100, 100)
@@ -25,7 +31,7 @@ shape = SubResource("BoxShape3D_kunfd")
 mesh = SubResource("BoxMesh_dudsn")
 
 [node name="RocketSocketCheckArea" type="Area3D" parent="."]
-input_ray_pickable = false
+script = ExtResource("2_mlwr4")
 
 [node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
 shape = SubResource("BoxShape3D_dudsn")
