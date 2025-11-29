@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		global_position = global_position.move_toward(desired_position,delta * _distance_to_midpoint)
 
 func _rotate_left_clicked():
+	last_x = -1.0
 	if camera_rotate_cool_off.time_left == 0.0:
 		if desired_rot - rotation_angle < -180:
 			desired_rot = 180
@@ -62,6 +63,7 @@ func _rotate_left_clicked():
 		camera_rotate_cool_off.start()
 
 func _rotate_right_clicked():
+	last_x = 1.0
 	if camera_rotate_cool_off.time_left == 0.0:
 		if desired_rot + rotation_angle > 180:
 			desired_rot = -180
