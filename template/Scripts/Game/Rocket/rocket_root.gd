@@ -5,6 +5,7 @@ signal do_socket_overlap_check
 const CUSTOM_GENERIC_6_DOF_JOINT_3D = preload("res://Scenes/Components/custom_generic_6dof_joint3d.tscn")
 const CUSTOM_PIN_JOINT = preload("res://Scenes/Components/custom_pin_joint.tscn")
 
+@export var starting_fuel:float = 100.0
 
 var _parent:RigidBody3D = null
 var _attached_socket:RocketSocketPoint
@@ -17,7 +18,8 @@ var current_fuel:float = 0.0:
 	set(value):
 		current_fuel = value
 		current_fuel_percentage = current_fuel/_total_fuel
-		print_rich("[color=brown] current fuel = " + str(current_fuel) + " %" + str(current_fuel_percentage) +"[/color]")
+		GVar.signal_bus.rocket_fuel_changed.emit(current_fuel,current_fuel_percentage)
+		print_rich("[color=brown] current fuel = " + str(current_fuel) + " %" + str(current_fuel_percentage*100.0) +"[/color]")
 var current_fuel_percentage:float = 0.0
 
 var do_once_sold:bool = true
@@ -35,6 +37,8 @@ func _ready() -> void:
 		GVar.signal_bus.rocket_launch.connect(set_launched)
 	else:
 		rocket_socket_check_area.area_left_clicked.connect(area_left_clicked)
+		
+	_total_fuel += starting_fuel
 
 func fuel_tank_added(fuel:float):
 	_total_fuel += fuel
