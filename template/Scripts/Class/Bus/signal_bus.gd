@@ -31,6 +31,8 @@ signal rocket_tank_added(fuel:float)
 @warning_ignore("unused_signal")
 signal rocket_tank_removed(fuel:float)
 @warning_ignore("unused_signal")
+signal total_fuel_changed(total:float)
+@warning_ignore("unused_signal")
 signal rocket_fuel_changed(fuel_current:float,fuel_precentage:float)
 
 ## RocketRoot current height

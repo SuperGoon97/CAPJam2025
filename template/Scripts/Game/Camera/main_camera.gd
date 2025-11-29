@@ -15,7 +15,6 @@ var z_dif:float = 0.0
 var root_rocket:RocketRoot = null
 
 var _look_at_mode:bool = false
-var _target_y:float = 0.0
 
 @onready var default_position:Vector3 = position
 @onready var _desired_z:float = default_position.z
@@ -33,11 +32,6 @@ func _physics_process(delta: float) -> void:
 		position.z += pow(dif,2.0) * delta
 	if _look_at_mode:
 		look_at(root_rocket.global_position)
-		if root_rocket.global_position.y > global_position.y:
-			_target_y = root_rocket.global_position.y
-		if _target_y != global_position.y:
-			var dist = _target_y - global_position.y
-			global_position.y += dist * delta * 30.0
 
 func setup():
 	if root_rocket == null:

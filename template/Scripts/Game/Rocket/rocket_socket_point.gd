@@ -3,6 +3,8 @@ class_name RocketSocketPoint extends Node3D
 @onready var rocket_socket_area_3d: Area3D = $RocketSocketArea3D
 var _socket_enabled:bool = true
 var mouse_is_over:bool = false
+var socket_bound:bool = false
+
 
 func _ready() -> void:
 	rocket_socket_area_3d.mouse_entered.connect(_on_mouse_entered_area)
@@ -56,11 +58,13 @@ func _overlap_check(..._args):
 func set_socket_enabled(state:bool):
 	_socket_enabled = state
 	if state == true:
+		socket_bound = false
 		set_area_monitor_state(true)
 		if !rocket_socket_area_3d.mouse_entered.is_connected(_on_mouse_entered_area):
 			rocket_socket_area_3d.mouse_entered.connect(_on_mouse_entered_area)
 			rocket_socket_area_3d.mouse_exited.connect(_on_mouse_exited_area)
 	else:
+		socket_bound = true
 		set_area_monitor_state(false)
 		if rocket_socket_area_3d.mouse_entered.is_connected(_on_mouse_entered_area):
 			rocket_socket_area_3d.mouse_entered.disconnect(_on_mouse_entered_area)

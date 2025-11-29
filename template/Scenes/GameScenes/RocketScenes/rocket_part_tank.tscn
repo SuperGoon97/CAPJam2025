@@ -12,9 +12,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
 size = Vector3(1.01, 1.01, 1.01)
 
-[node name="RocketPartTank" type="CollisionShape3D" groups=["RocketPart"]]
+[node name="RocketPartTank" type="CollisionShape3D" node_paths=PackedStringArray("prefered_socket") groups=["RocketPart"]]
 shape = SubResource("BoxShape3D_vbojs")
 script = ExtResource("1_uxyov")
+prefered_socket = NodePath("RocketSocketPoint5")
 
 [node name="RocketSocketPoint5" parent="." instance=ExtResource("2_6idbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)

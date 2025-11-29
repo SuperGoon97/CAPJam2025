@@ -2,8 +2,9 @@ class_name RocketThurster extends RocketPart
 
 @onready var thrust_point: Node3D = $ThrustPoint
 @onready var rocket_root:RocketRoot = get_tree().get_first_node_in_group("ShipRoot")
+
 @export var thrust_force:float = 1000.0
-@export var fuel_cost_per_delta:float = 10.0
+@export var fuel_cost_per_delta:float = 20.0
 var _do_thrust:bool = false
 
 func _ready() -> void:

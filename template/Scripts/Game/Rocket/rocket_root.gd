@@ -13,7 +13,10 @@ var _array_joints:Array[PinJoint3D]
 var _scoring_part:bool = false
 var _launched:bool = false
 
-var _total_fuel:float = 0.0
+var _total_fuel:float = 0.0:
+	set(value):
+		_total_fuel = value
+		GVar.signal_bus.total_fuel_changed.emit(_total_fuel)
 var current_fuel:float = 0.0:
 	set(value):
 		current_fuel = value

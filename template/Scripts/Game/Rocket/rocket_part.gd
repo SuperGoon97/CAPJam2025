@@ -5,6 +5,7 @@ signal do_socket_overlap_check
 var do_once_sold:bool = true
 var resource_data:RocketPartResource
 @onready var rocket_socket_check_area: RocketArea3D = $RocketSocketCheckArea
+@export var prefered_socket:RocketSocketPoint
 
 func _ready() -> void:
 	if !GVar.signal_bus:
@@ -23,6 +24,13 @@ func setup(attached_socket:RocketSocketPoint):
 	var direction_vec:Vector3 = Vector3(attached_socket.global_position - temp_pos).normalized().round()
 	var half_rocket_bounds:Vector3 = shape.size
 	var position_mod:Vector3 = (direction_vec * half_rocket_bounds * 1.025)
+	if prefered_socket:
+		var dir_socket:Vector3 = Vector3(prefered_socket.global_position - global_position).normalized().round()
+		var cross_product:Vector3 = direction_vec.cross(dir_socket)
+		var angle_to:float = dir_socket.angle_to(direction_vec)
+		#var rot_quat:Quaternion = Quaternion(cross_product,angle_to)
+		if cross_product != Vector3.ZERO:
+			rotate(cross_product.normalized(),angle_to)
 	global_position = temp_pos + position_mod
 	await get_tree().physics_frame
 	await get_tree().physics_frame
@@ -39,9 +47,16 @@ func setup(attached_socket:RocketSocketPoint):
 
 func area_left_clicked():
 	var children:Array[Node] = get_children()
+	var socket_array:Array[RocketSocketPoint]
+	var n_sockets_bound:int = 0
 	for child in children:
-		if child is RocketPart:
-			return
+		if child is RocketSocketPoint:
+			socket_array.push_back(child)
+	for socket in socket_array:
+		if socket.socket_bound:
+			n_sockets_bound +=1
+	if n_sockets_bound > 1:
+		return
 	if do_once_sold:
 		GVar.signal_bus.rocket_part_sold.emit(self)
 		do_once_sold = !do_once_sold
