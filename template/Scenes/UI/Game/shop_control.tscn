@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b65ptox7c8pai"]
+[gd_scene load_steps=15 format=3 uid="uid://b65ptox7c8pai"]
 
 [ext_resource type="PackedScene" uid="uid://btv1j6rkn1x0x" path="res://Scenes/UI/Game/shop_button.tscn" id="1_7g370"]
 [ext_resource type="Script" uid="uid://be3r6h0jmfdm6" path="res://Scripts/UI/Shop/shop_control.gd" id="1_k1wb0"]
@@ -11,6 +11,25 @@
 [ext_resource type="Script" uid="uid://dl0voif1yqy05" path="res://Scripts/UI/Shop/button_rot.gd" id="9_k706b"]
 [ext_resource type="Texture2D" uid="uid://dgqr0lc8wbk5o" path="res://Assets/Sprites/t_ui_arrow_antiClockwise.png" id="10_k8dym"]
 [ext_resource type="Texture2D" uid="uid://p1ax154s7v58" path="res://Assets/Sprites/t_ui_arrow_clockWise.png" id="11_n6sdq"]
+[ext_resource type="Script" uid="uid://dvuqacg71gkk3" path="res://Scripts/UI/Game/fuel_progress_bar.gd" id="12_n6sdq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_teguj"]
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.85700005)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uw7mt"]
+bg_color = Color(0.9817832, 0.34111598, 0.456863, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.91700006)
 
 [node name="ShopControl" type="Control"]
 layout_mode = 3
@@ -143,6 +162,45 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("11_n6sdq")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -131.0
+offset_right = 457.0
+offset_bottom = -39.0
+grow_vertical = 0
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+theme_override_styles/background = SubResource("StyleBoxFlat_teguj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uw7mt")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("12_n6sdq")
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.89500004)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 19
+theme_override_font_sizes/font_size = 52
+text = "Fuel: 500L"
+vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="ArrowContainer/Button_Rot2" to="ArrowContainer/Button_Rot2" method="_on_pressed"]
 [connection signal="pressed" from="ArrowContainer/Button_Rot" to="ArrowContainer/Button_Rot" method="_on_pressed"]

@@ -7,6 +7,5 @@ func _ready() -> void:
 	GVar.signal_bus.rocket_fuel_changed.connect(_onFuelChanged)
 	value = 100
 	
-func _onFuelChanged(current_fuel:float,fuel_percent:float):
+func _onFuelChanged(_current_fuel:float,fuel_percent:float):
 	value = fuel_percent * 100
-	print ("This function is working")
