@@ -20,10 +20,18 @@ signal rocket_launch
 @warning_ignore("unused_signal")
 signal physics_enabled
 @warning_ignore("unused_signal")
-signal score_changed(new_score:int)
-@warning_ignore("unused_signal")
 signal rotate_cam_right
 @warning_ignore("unused_signal")
 signal rotate_cam_left
+
+## RocketRoot current height
 @warning_ignore("unused_signal")
 signal rocket_root_height_changed(height:float)
+
+## Current score/money
+@warning_ignore("unused_signal")
+signal score_changed(new_score:int)
+@warning_ignore("unused_signal")
+signal current_height_changed(value:float)
+@warning_ignore("unused_signal")
+signal highscore_height_changed(value:float)
