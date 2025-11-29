@@ -9,6 +9,7 @@
 [node name="RocketBase" type="RigidBody3D"]
 mass = 0.5
 center_of_mass_mode = 1
+inertia = Vector3(1, 1, 1)
 angular_damp = 10.0
 script = ExtResource("1_dudsn")
 

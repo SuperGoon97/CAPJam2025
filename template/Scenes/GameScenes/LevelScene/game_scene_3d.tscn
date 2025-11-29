@@ -47,7 +47,7 @@ light_angular_distance = 30.0
 script = ExtResource("4_ot84h")
 
 [node name="Main Camera" type="Camera3D" parent="World Origin/CameraPivotPoint" groups=["MainCamera"]]
-transform = Transform3D(1, 0, 0, 0, 0.85411406, 0.5200857, 0, -0.5200857, 0.85411406, 0, 5.2519746, 5.3387527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 6)
 
 [node name="UpperSceneCanvas" type="CanvasLayer" parent="."]
 script = ExtResource("3_4ppc3")
@@ -59,3 +59,7 @@ _layer = 4
 
 [node name="RocketBase" parent="." groups=["ShipRoot"] instance=ExtResource("6_t0qif")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014885187, 3.4971278, -0.00085929036)
+mass = 1.0
+center_of_mass_mode = 0
+inertia = Vector3(0, 0, 0)
+angular_damp = 0.0

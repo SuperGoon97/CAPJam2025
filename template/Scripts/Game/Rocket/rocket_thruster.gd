@@ -2,7 +2,7 @@ class_name RocketThurster extends RocketBase
 
 @onready var thrust_point: Node3D = $ThrustPoint
 
-@export var thrust_force:float = 1000.0
+@export var thrust_force:float = 5000.0
 var _do_thrust:bool = false
 
 func _ready() -> void:
