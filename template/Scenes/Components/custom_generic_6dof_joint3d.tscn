@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bidu7nnemvug4"]
+
+[ext_resource type="Script" uid="uid://c5nhyr568ov0u" path="res://Scripts/Components/custom_generic_6_dof_joint_3d.gd" id="1_qnxul"]
+
+[node name="CustomGeneric6DofJoint3d" type="Generic6DOFJoint3D"]
+linear_limit_x/upper_distance = 0.01
+linear_limit_y/upper_distance = 0.01
+linear_limit_z/upper_distance = 0.01
+linear_spring_x/enabled = true
+linear_spring_y/enabled = true
+linear_spring_z/enabled = true
+script = ExtResource("1_qnxul")

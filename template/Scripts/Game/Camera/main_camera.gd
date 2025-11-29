@@ -14,6 +14,9 @@ var z_dif:float = 0.0
 
 var root_rocket:RocketBase = null
 
+var _look_at_mode:bool = false
+var _target_y:float = 0.0
+
 @onready var default_position:Vector3 = position
 @onready var _desired_z:float = default_position.z
 
@@ -21,13 +24,21 @@ func _ready() -> void:
 	if GVar.signal_bus == null:
 		await GVar.scene_manager.game_ready
 		GVar.signal_bus.rocket_part_added.connect(recalculate_size)
+		GVar.signal_bus.rocket_launch.connect(_rocket_launched)
 	setup()
 
 func _physics_process(delta: float) -> void:
 	if position.z < _desired_z:
 		var dif:float = _desired_z - position.z
 		position.z += pow(dif,2.0) * delta
-
+	if _look_at_mode:
+		var cntr_point:Vector3 = get_center_point()
+		look_at(cntr_point)
+		if cntr_point.y != global_position.y:
+			_target_y = cntr_point.y
+		if _target_y != global_position.y:
+			var dist = _target_y - global_position.y
+			global_position.y += dist * delta * 30.0
 func setup():
 	if root_rocket == null:
 		while root_rocket == null:
@@ -71,6 +82,9 @@ func recalculate_size():
 		_desired_z = default_position.z + (x_dif * z_pos_change_mod)
 	else:
 		_desired_z = default_position.z + (z_dif * z_pos_change_mod)
+
+func _rocket_launched():
+	_look_at_mode = true
 
 func get_rocket_part_array() -> Array[Node3D]:
 	var array_nodes:Array[Node] = get_tree().get_nodes_in_group("RocketPart")

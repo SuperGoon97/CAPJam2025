@@ -12,9 +12,10 @@ size = Vector3(1.1, 1.1, 1.1)
 [node name="RocketBase" type="RigidBody3D" groups=["RocketPart"]]
 mass = 0.5
 center_of_mass_mode = 1
-inertia = Vector3(1, 1, 1)
+center_of_mass = Vector3(0, -0.1, 0)
+inertia = Vector3(100, 100, 100)
 freeze = true
-angular_damp = 10.0
+angular_damp = 30.0
 script = ExtResource("1_dudsn")
 
 [node name="RocketCollisionShape" type="CollisionShape3D" parent="."]

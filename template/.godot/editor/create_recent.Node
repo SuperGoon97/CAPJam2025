@@ -1,3 +1,5 @@
+Generic6DOFJoint3D
+PinJoint3D
 TextureRect
 ButtonBase
 HBoxContainer
@@ -5,11 +7,8 @@ VBoxContainer
 Timer
 CollisionShape3D
 Area3D
-Generic6DOFJoint3D
 Node3D
 RocketSocketPoint
 ConeTwistJoint3D
-PinJoint3D
 StaticBody3D
 RigidBody3D
-MeshInstance3D

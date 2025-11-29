@@ -2,8 +2,13 @@ class_name RocketBase extends RigidBody3D
 
 signal do_socket_overlap_check
 
+const CUSTOM_GENERIC_6_DOF_JOINT_3D = preload("res://Scenes/Components/custom_generic_6dof_joint3d.tscn")
+const CUSTOM_PIN_JOINT = preload("res://Scenes/Components/custom_pin_joint.tscn")
+
+
 var _parent:RigidBody3D = null
 var _attached_socket:RocketSocketPoint
+var _array_joints:Array[PinJoint3D]
 
 @onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
 @onready var rocket_socket_check_area: Area3D = $RocketSocketCheckArea
@@ -12,6 +17,19 @@ func _ready() -> void:
 	if !GVar.signal_bus:
 		await GVar.scene_manager.game_ready
 	GVar.signal_bus.physics_enabled.connect(unfreeze)
+
+func _physics_process(_delta: float) -> void:
+	for node in _array_joints:
+		if global_position.distance_to(node.global_position) > 1.0:
+			explode()
+
+
+func explode():
+		for i in _array_joints.size():
+			print_rich("[color=red]Successful break[/color]")
+			var joint:Node3D = _array_joints.pop_back()
+			joint.call_deferred("queue_free")
+			
 
 func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint):
 	_parent = new_parent
@@ -33,13 +51,16 @@ func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint):
 				overlapping_sockets.push_back(area.get_parent())
 	
 	for socket in overlapping_sockets:
-		var new_joint:Generic6DOFJoint3D = Generic6DOFJoint3D.new()
-		add_child(new_joint)
+		var new_joint:PinJoint3D = CUSTOM_PIN_JOINT.instantiate()
+		socket.get_parent().add_child(new_joint)
 		new_joint.exclude_nodes_from_collision = false
 		new_joint.global_position = socket.global_position
-		new_joint.node_a = self.get_path()
-		new_joint.node_b = socket.get_parent().get_path()
+		new_joint.node_a = socket.get_parent().get_path()
+		new_joint.node_b = self.get_path()
+		_array_joints.push_back(new_joint)
+		print_rich("[color=blue]"+str(_array_joints)+"[/color]")
 		socket.set_socket_enabled(false)
 	do_socket_overlap_check.emit()
+
 func unfreeze():
 	set_deferred("freeze",false)
