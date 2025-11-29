@@ -24,4 +24,3 @@ mouse_filter = 2
 
 [node name="ShopControl" parent="." instance=ExtResource("2_pclsy")]
 layout_mode = 1
-offset_right = -1447.0

@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://btv1j6rkn1x0x"]
+
+[ext_resource type="Script" uid="uid://c5cdl1naw77lt" path="res://Scripts/UI/Buttons/shop_button.gd" id="2_p63c0"]
+[ext_resource type="Resource" uid="uid://cpujqdhgm87q3" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_body_test.tres" id="3_wd011"]
+
+[node name="Button1" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+focus_mode = 0
+script = ExtResource("2_p63c0")
+rocket_resource = ExtResource("3_wd011")
+metadata/_custom_type_script = "uid://dgx1cflkdckp7"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -26.0
+offset_right = 51.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.92021066, 0.1428257, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 14
+theme_override_constants/shadow_outline_size = 19
+theme_override_font_sizes/font_size = 32
+text = "$3500"
