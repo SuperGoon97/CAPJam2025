@@ -7,6 +7,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_dudsn"]
 
 [node name="RocketBase" type="RigidBody3D"]
+mass = 0.5
+center_of_mass_mode = 1
+angular_damp = 10.0
 script = ExtResource("1_dudsn")
 
 [node name="RocketCollisionShape" type="CollisionShape3D" parent="."]

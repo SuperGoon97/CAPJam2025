@@ -13,3 +13,9 @@ signal player_grabbed_rocket_part_from_shop(rocket_part:RocketPartResource)
 signal rocket_part_added
 @warning_ignore("unused_signal")
 signal player_right_click
+@warning_ignore("unused_signal")
+signal rocket_launch
+@warning_ignore("unused_signal")
+signal physics_enabled
+@warning_ignore("unused_signal")
+signal score_changed(new_score:int)

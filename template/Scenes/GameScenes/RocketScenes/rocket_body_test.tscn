@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_xcyed"]
 
 [node name="RocketBase" instance=ExtResource("1_v2ct2")]
+mass = 2.0
+freeze = true
 
 [node name="RocketSocketPoint" parent="." index="2" instance=ExtResource("2_xcyed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4955498)

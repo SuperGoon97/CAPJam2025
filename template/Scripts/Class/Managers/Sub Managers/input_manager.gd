@@ -7,3 +7,6 @@ func _game_ready():
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
 		GVar.signal_bus.player_right_click.emit()
+		print("rclick")
+		GVar.signal_bus.physics_enabled.emit()
+		GVar.signal_bus.rocket_launch.emit()

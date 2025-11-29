@@ -11,7 +11,10 @@ var max_score:int:
 		current_score += value - max_score
 		max_score = value
 
-var current_score:int
+var current_score:int:
+	set(value):
+		current_score = value
+		GVar.signal_bus.score_changed.emit(current_score)
 
 func _game_ready():
 	GVar.signal_bus.mouse_entered_socket.connect(mouse_over_socket)

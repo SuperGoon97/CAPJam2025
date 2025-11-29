@@ -1,3 +1,8 @@
+Generic6DOFJoint3D
+Node3D
+RocketSocketPoint
+ConeTwistJoint3D
+PinJoint3D
 StaticBody3D
 RigidBody3D
 CollisionShape3D
@@ -6,10 +11,5 @@ MeshInstance3D
 VBoxContainer
 Control
 VSplitContainer
-Node3D
 Node
 DirectionalLight3D
-WorldEnvironment
-SceneBaseMultiViewport
-Camera2D
-Node2D

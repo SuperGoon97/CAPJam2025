@@ -1,7 +1,7 @@
 res://Scripts/Game/Rocket
-res://Scripts/Resources/GameResources/ShipResources
 res://Assets/Materials
 res://Scenes/GameScenes/RocketScenes
+res://Scripts/Resources/GameResources/ShipResources
 res://Scenes/UI/Game
 res://Scripts/Resources/Enviroments
 res://

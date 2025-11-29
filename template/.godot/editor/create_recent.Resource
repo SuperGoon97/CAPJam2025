@@ -1,6 +1,5 @@
-ShipPartResource
-Resource
 StandardMaterial3D
+Resource
 Environment
 PhysicsMaterial
 AudioStream

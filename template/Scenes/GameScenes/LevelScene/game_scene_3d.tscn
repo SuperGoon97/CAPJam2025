@@ -58,5 +58,4 @@ script = ExtResource("3_4ppc3")
 _layer = 4
 
 [node name="RocketBase" parent="." groups=["ShipRoot"] instance=ExtResource("6_t0qif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014885187, 1.1631131, -0.00085929036)
-script = null
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014885187, 3.4971278, -0.00085929036)
