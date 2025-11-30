@@ -8,7 +8,7 @@
 rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kunfd"]
-size = Vector3(1.2, 1.2, 1.2)
+size = Vector3(1.1, 1.1, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dudsn"]
 size = Vector3(1.01, 1.01, 1.01)
