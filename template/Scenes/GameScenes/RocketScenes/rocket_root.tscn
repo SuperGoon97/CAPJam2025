@@ -17,13 +17,13 @@ physics_material_override = SubResource("PhysicsMaterial_mlwr4")
 freeze = true
 contact_monitor = true
 max_contacts_reported = 64
-angular_damp = 30.0
 script = ExtResource("1_k7mrb")
 
 [node name="RocketCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kunfd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 mesh = ExtResource("2_e63gs")
 
 [node name="RocketSocketCheckArea" type="Area3D" parent="."]

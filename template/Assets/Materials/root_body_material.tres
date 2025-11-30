@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://cth61v8ci1tkh"]
+
+[ext_resource type="Texture2D" uid="uid://bdttn3fov11u5" path="res://Assets/Textures/Cube_Module/Base_color.png" id="1_camb6"]
+[ext_resource type="Texture2D" uid="uid://cmva56dyfpuau" path="res://Assets/Textures/Cube_Module/AO.png" id="2_jg120"]
+[ext_resource type="Texture2D" uid="uid://eql2xwg0kpna" path="res://Assets/Textures/Cube_Module/Height.png" id="3_bc8db"]
+[ext_resource type="Texture2D" uid="uid://c1xhashdibq0p" path="res://Assets/Textures/Cube_Module/Metallic.png" id="4_r1lu7"]
+[ext_resource type="Texture2D" uid="uid://ctl2n6meanhse" path="res://Assets/Textures/FUle_Tank_Module/Normal.png" id="5_44aox"]
+[ext_resource type="Texture2D" uid="uid://cpuc3brnywbuv" path="res://Assets/Textures/Cube_Module/Roughness.png" id="6_ifnia"]
+
+[resource]
+albedo_texture = ExtResource("1_camb6")
+metallic = 0.5
+metallic_specular = 0.25
+metallic_texture = ExtResource("4_r1lu7")
+roughness_texture = ExtResource("6_ifnia")
+emission_enabled = true
+emission = Color(0.20205513, 0.19006547, 0, 1)
+normal_texture = ExtResource("5_44aox")
+ao_enabled = true
+ao_texture = ExtResource("2_jg120")
+heightmap_enabled = true
+heightmap_scale = 0.5
+heightmap_texture = ExtResource("3_bc8db")

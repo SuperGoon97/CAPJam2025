@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq71jhoy1v8ij"]
+[gd_scene load_steps=4 format=3 uid="uid://dq71jhoy1v8ij"]
 
 [ext_resource type="PackedScene" uid="uid://vi51gqxss6t" path="res://Scenes/GameScenes/RocketScenes/rocket_root.tscn" id="1_qe50t"]
+[ext_resource type="Material" uid="uid://cth61v8ci1tkh" path="res://Assets/Materials/root_body_material.tres" id="2_5fft1"]
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_lk16e"]
 
 [node name="RocketBase" instance=ExtResource("1_qe50t")]
 mass = 0.75
 
 [node name="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = ExtResource("2_5fft1")
 
 [node name="RocketSocketPoint" parent="." index="2" instance=ExtResource("2_lk16e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.52591693)
