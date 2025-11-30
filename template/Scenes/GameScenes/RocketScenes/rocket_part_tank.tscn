@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_6idbs"]
 [ext_resource type="Material" uid="uid://dm0104618xb80" path="res://Assets/Materials/tank_material.tres" id="3_6idbs"]
 [ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="3_6opic"]
-[ext_resource type="ArrayMesh" uid="uid://pe88kdotam5g" path="res://Assets/Meshes/RocketTankPart.res" id="4_6opic"]
+[ext_resource type="ArrayMesh" uid="uid://b5aci73hwsh0k" path="res://Assets/Meshes/RocketTankPart.res" id="4_6opic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
 
@@ -14,6 +14,7 @@ size = Vector3(1.01, 1.01, 1.01)
 [node name="RocketPartTank" type="CollisionShape3D" node_paths=PackedStringArray("prefered_socket") groups=["RocketPart"]]
 shape = SubResource("BoxShape3D_vbojs")
 script = ExtResource("1_uxyov")
+fuel = 200.0
 prefered_socket = NodePath("RocketSocketPoint5")
 
 [node name="RocketSocketPoint5" parent="." instance=ExtResource("2_6idbs")]

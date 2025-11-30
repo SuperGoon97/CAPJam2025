@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cx5fvl3gysa2a" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_block.tres" id="2_3btdd"]
 [ext_resource type="Resource" uid="uid://b2oqjq5cdwcu1" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_thruster.tres" id="3_ur22g"]
 [ext_resource type="Resource" uid="uid://ovys61sx81ta" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_fuel.tres" id="4_culsl"]
-[ext_resource type="Resource" uid="uid://h5rcays0b5hs" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_cone.tres" id="5_k1wb0"]
+[ext_resource type="Resource" uid="uid://h5rcays0b5hs" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_duck.tres" id="5_k1wb0"]
 [ext_resource type="Script" uid="uid://bavouk4ls6rm" path="res://Scripts/UI/Shop/shop_current_score.gd" id="6_ur22g"]
 [ext_resource type="PackedScene" uid="uid://cdtd5iwd0f8tv" path="res://Scenes/UI/Game/shop_goButton.tscn" id="7_culsl"]
 [ext_resource type="Script" uid="uid://dl0voif1yqy05" path="res://Scripts/UI/Shop/button_rot.gd" id="9_k706b"]

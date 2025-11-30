@@ -14,6 +14,7 @@ size = Vector3(1.01, 1.01, 1.01)
 [node name="RocketBodyBlock" type="CollisionShape3D" node_paths=PackedStringArray("prefered_socket") groups=["RocketPart"]]
 shape = SubResource("BoxShape3D_vbojs")
 script = ExtResource("1_brtww")
+thrust_force = 1500.0
 prefered_socket = NodePath("RocketSocketPoint3")
 
 [node name="RocketSocketPoint3" parent="." instance=ExtResource("2_brtww")]

@@ -1,6 +1,6 @@
 class_name RocketPartTank extends RocketPart
 
-var fuel:float = 100.0
+@export var fuel:float = 100.0
 
 func _ready() -> void:
 	super()
