@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://6ua5qhkgsdlg"]
+[gd_scene load_steps=8 format=3 uid="uid://6ua5qhkgsdlg"]
 
 [ext_resource type="Script" uid="uid://fq8hqk0bfji1" path="res://Scripts/Game/Rocket/rocket_part.gd" id="1_rvr5u"]
 [ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_ev4du"]
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_xcyed"]
+[ext_resource type="Material" uid="uid://bqcmptvw4yal6" path="res://Assets/Materials/body_material.tres" id="3_o6p3e"]
+[ext_resource type="ArrayMesh" uid="uid://dduvjm7e6fbkc" path="res://Assets/Meshes/RocketBodyPart.res" id="3_qhk5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_rvr5u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
 size = Vector3(1.01, 1.01, 1.01)
@@ -34,7 +34,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5218751, 0, -0.004120946)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_rvr5u")
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
+material_override = ExtResource("3_o6p3e")
+mesh = ExtResource("3_qhk5o")
 
 [node name="RocketSocketCheckArea" type="Area3D" parent="."]
 script = ExtResource("2_ev4du")
