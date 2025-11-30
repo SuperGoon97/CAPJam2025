@@ -1,11 +1,17 @@
-[gd_resource type="Resource" script_class="RocketPartResource" load_steps=3 format=3 uid="uid://ovys61sx81ta"]
+[gd_resource type="Resource" script_class="RocketPartTankResource" load_steps=6 format=3 uid="uid://b1blsvg5sr484"]
 
-[ext_resource type="Texture2D" uid="uid://d2ub6xmyno1bo" path="res://Assets/Sprites/Fule_Tank_Module_2.png" id="1_bk3fw"]
-[ext_resource type="Script" uid="uid://b4ynbiek7cbdq" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_resource.gd" id="2_fttbp"]
+[ext_resource type="AudioStream" uid="uid://dpq2jacrc8dry" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_fuel_discard.wav" id="1_ahxgd"]
+[ext_resource type="Texture2D" uid="uid://d2ub6xmyno1bo" path="res://Assets/Sprites/Fule_Tank_Module_2.png" id="1_bx2ya"]
+[ext_resource type="Script" uid="uid://dodgqy10s5wxq" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_tank_resource.gd" id="1_o6132"]
+[ext_resource type="AudioStream" uid="uid://cbm5vbm7qc5bm" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_fuel_pickup.wav" id="3_x75qc"]
+[ext_resource type="AudioStream" uid="uid://bvpuisxvy2g3u" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_fuel_place.wav" id="4_iu43c"]
 
 [resource]
-script = ExtResource("2_fttbp")
+script = ExtResource("1_o6132")
 scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_part_tank.tscn"
-icon = ExtResource("1_bk3fw")
+icon = ExtResource("1_bx2ya")
 cost = 1000
-metadata/_custom_type_script = "uid://b4ynbiek7cbdq"
+pickup_sound = ExtResource("3_x75qc")
+place_sound = ExtResource("4_iu43c")
+discard_sound = ExtResource("1_ahxgd")
+metadata/_custom_type_script = "uid://dodgqy10s5wxq"

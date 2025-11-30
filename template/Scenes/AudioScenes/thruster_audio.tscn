@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://4j6slkd7rbtb"]
+
+[ext_resource type="AudioStream" uid="uid://bjqdpbsf1bs6h" path="res://Assets/Audio/AudioFiles/SFX/snd_rocket_thruster_start.wav" id="1_xd026"]
+[ext_resource type="AudioStream" uid="uid://cssasyv8clxo3" path="res://Assets/Audio/AudioFiles/SFX/snd_rocket_thruster_loop.wav" id="2_uvjp6"]
+[ext_resource type="Script" uid="uid://c1wmdix2jdkiy" path="res://Scenes/AudioScenes/thruster_audio.gd" id="3_uvjp6"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_2qt3t"]
+clip_count = 2
+clip_0/name = &"Snd Rocket Thruster Start"
+clip_0/stream = ExtResource("1_xd026")
+clip_0/auto_advance = 0
+clip_1/name = &"Snd Rocket Thruster Loop"
+clip_1/stream = ExtResource("2_uvjp6")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D"]
+stream = SubResource("AudioStreamInteractive_2qt3t")
+bus = &"SFX"
+script = ExtResource("3_uvjp6")

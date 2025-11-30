@@ -8,6 +8,7 @@ func _ready() -> void:
 	visible = false
 	GVar.signal_bus.rocket_launch.connect(_makeVisible)
 	GVar.signal_bus.current_height_changed.connect(_heightChanged)
+	GVar.signal_bus.new_rocket_created.connect(hide)
 func _makeVisible() -> void:
 	visible = true
 	

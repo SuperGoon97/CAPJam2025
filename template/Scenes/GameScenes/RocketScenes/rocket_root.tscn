@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://vi51gqxss6t"]
 
 [ext_resource type="Script" uid="uid://g4twyce6scf3" path="res://Scripts/Game/Rocket/rocket_root.gd" id="1_k7mrb"]
-[ext_resource type="ArrayMesh" uid="uid://dduvjm7e6fbkc" path="res://Assets/Meshes/RocketBodyPart.res" id="2_e63gs"]
+[ext_resource type="ArrayMesh" uid="uid://c2xwq3wmsgg7k" path="res://Assets/Meshes/RocketBodyPart.res" id="2_e63gs"]
 [ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_hxdxv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mlwr4"]
@@ -14,6 +14,7 @@ size = Vector3(1.01, 1.01, 1.01)
 
 [node name="RocketRoot" type="RigidBody3D" groups=["RocketPart"]]
 physics_material_override = SubResource("PhysicsMaterial_mlwr4")
+gravity_scale = 2.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 64

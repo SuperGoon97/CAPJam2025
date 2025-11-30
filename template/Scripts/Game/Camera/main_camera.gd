@@ -22,8 +22,9 @@ var _look_at_mode:bool = false
 func _ready() -> void:
 	if GVar.signal_bus == null:
 		await GVar.scene_manager.game_ready
-		GVar.signal_bus.rocket_part_added.connect(recalculate_size)
-		GVar.signal_bus.rocket_launch.connect(_rocket_launched)
+	GVar.signal_bus.rocket_part_added.connect(recalculate_size)
+	GVar.signal_bus.rocket_launch.connect(_rocket_launched)
+	GVar.signal_bus.new_rocket_created.connect(new_rocket)
 	setup()
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 func setup():
 	if root_rocket == null:
 		while root_rocket == null:
-			root_rocket = get_tree().get_first_node_in_group("ShipRoot")
+			root_rocket = get_rocket_root()
 			await get_tree().process_frame
 	max_pos_y = root_rocket.global_position.y
 	max_mpos_y = root_rocket.global_position.y
@@ -46,7 +47,7 @@ func setup():
 	max_pos_z = root_rocket.global_position.z
 	max_mpos_z = root_rocket.global_position.z
 
-func recalculate_size():
+func recalculate_size(_args):
 	var array_rocket_parts:Array[Node3D] = get_rocket_part_array()
 	for rocket in array_rocket_parts:
 		if rocket.global_position.y > max_pos_y:
@@ -80,6 +81,11 @@ func recalculate_size():
 
 func _rocket_launched():
 	_look_at_mode = true
+func new_rocket():
+	_look_at_mode = false
+	position = default_position
+	rotation = Vector3(0.0,0.0,0.0)
+	root_rocket = get_rocket_root()
 
 func get_rocket_part_array() -> Array[Node3D]:
 	var array_nodes:Array[Node] = get_tree().get_nodes_in_group("RocketPart")
@@ -95,3 +101,6 @@ func get_center_point() -> Vector3:
 		cum_gpos += _node_3d.global_position
 	ret_vector = cum_gpos / array_rocket_parts.size()
 	return ret_vector
+
+func get_rocket_root() -> Node:
+	return get_tree().get_first_node_in_group("ShipRoot")

@@ -12,11 +12,11 @@ func _ready() -> void:
 	if !GVar.signal_bus:
 		await GVar.scene_manager.game_ready
 	GVar.signal_bus.player_grabbed_rocket_part_from_shop.connect(_player_grabbed_rocket_part_from_shop)
-	GVar.signal_bus.rocket_part_added.connect(_request_visibility_change.bind(false))
-	GVar.signal_bus.player_right_click.connect(_request_visibility_change.bind(false))
-	GVar.signal_bus.player_release_left_click.connect(_request_visibility_change.bind(false))
+	GVar.signal_bus.rocket_part_added.connect(rocket_part_added)
+	GVar.signal_bus.player_right_click.connect(_request_visibility_change.bind(false,false))
+	GVar.signal_bus.player_release_left_click.connect(_request_visibility_change.bind(false,false))
 	GVar.signal_bus.rocket_part_sold.connect(_overlap_check)
-	_request_visibility_change(false)
+	_request_visibility_change(null,false)
 	var rocket_parent = get_parent()
 	rocket_parent.do_socket_overlap_check.connect(_overlap_check)
 func _on_mouse_entered_area():
@@ -32,13 +32,16 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventMouseButton and event.is_released() and event.button_index == 1:
 			GVar.signal_bus.socket_clicked.emit(self)
 
-func _request_visibility_change(state:bool):
+func rocket_part_added(_args):
+	_request_visibility_change(null,false)
+	pass
+func _request_visibility_change(_args,state:bool):
 	if _socket_enabled == false: return
 	else:
 		visible = state
 
 func _player_grabbed_rocket_part_from_shop(_args):
-	_request_visibility_change(true)
+	_request_visibility_change(null,true)
 
 func _overlap_check(..._args):
 	rocket_socket_area_3d.set_deferred("monitoring",true)

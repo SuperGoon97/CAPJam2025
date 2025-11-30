@@ -5,6 +5,9 @@ class_name BuildManager extends ManagerBase
 var _hovered_socket:RocketSocketPoint
 var _player_held_rocket_bit:RocketPartResource
 
+var active_rocket = PackedScene.new()
+var rocket_spawn_point:Vector3 = Vector3(0.0,3.5,0.0)
+
 var highscore_height:float = 0.0:
 	set(value):
 		highscore_height = value
@@ -40,10 +43,12 @@ func _game_ready():
 	GVar.signal_bus.mouse_exited_socket.connect(mouse_exit_socket)
 	GVar.signal_bus.socket_clicked.connect(socket_clicked)
 	GVar.signal_bus.player_grabbed_rocket_part_from_shop.connect(set_player_held_rocket_bit)
-	GVar.signal_bus.rocket_part_added.connect(set_player_held_rocket_bit.bind(null))
+	GVar.signal_bus.rocket_part_added.connect(player_added_rocket_bit)
 	GVar.signal_bus.player_right_click.connect(right_click_handler)
 	GVar.signal_bus.rocket_root_height_changed.connect(set_current_height)
 	GVar.signal_bus.rocket_part_sold.connect(rocket_part_sold)
+	GVar.signal_bus.rocket_launch.connect(rocket_launched)
+	GVar.signal_bus.root_destroyed.connect(root_destroyed)
 	max_score += starting_score
 	pass
 
@@ -69,7 +74,6 @@ func socket_clicked(_socket:RocketSocketPoint):
 		new_rocket_part.owner = ship_root
 		new_rocket_part.resource_data = _player_held_rocket_bit
 		new_rocket_part.setup(_socket)
-		GVar.signal_bus.rocket_part_added.emit()
 
 func rocket_part_sold(rocket_part:RocketPart):
 	print("sold")
@@ -87,3 +91,22 @@ func left_click_released_handler():
 
 func set_player_held_rocket_bit(rocket_bit:RocketPartResource):
 	_player_held_rocket_bit = rocket_bit
+
+func player_added_rocket_bit(_rocket_bit:RocketPartResource):
+	_player_held_rocket_bit = null
+
+func rocket_launched():
+	var node = get_tree().get_first_node_in_group("ShipRoot")
+	if node is RocketRoot:
+		active_rocket.pack(node)
+
+func root_destroyed():
+	#do some ui first
+	await get_tree().create_timer(3.0).timeout
+	GVar.scene_manager.fnc_transition_screen(true)
+	await GVar.scene_manager.transition_screen.screen_hidden
+	var new_rocket = active_rocket.instantiate()
+	GVar.active_scene.add_child(new_rocket)
+	new_rocket.global_position = rocket_spawn_point
+	GVar.signal_bus.new_rocket_created.emit()
+	GVar.scene_manager.fnc_transition_screen(false)

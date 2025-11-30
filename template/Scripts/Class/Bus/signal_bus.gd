@@ -10,7 +10,7 @@ signal socket_clicked(socket:RocketSocketPoint)
 @warning_ignore("unused_signal")
 signal player_grabbed_rocket_part_from_shop(rocket_part:RocketPartResource)
 @warning_ignore("unused_signal")
-signal rocket_part_added
+signal rocket_part_added(rocket_resource:RocketPartResource)
 @warning_ignore("unused_signal")
 signal rocket_part_sold(rocket_part:RocketPart)
 @warning_ignore("unused_signal")
@@ -46,6 +46,12 @@ signal score_changed(new_score:int)
 signal current_height_changed(value:float)
 @warning_ignore("unused_signal")
 signal highscore_height_changed(value:float)
+@warning_ignore("unused_signal")
+signal meters_per_second_changed(value:float)
 
 @warning_ignore("unused_signal")
 signal root_destroyed
+@warning_ignore("unused_signal")
+signal new_rocket_created
+@warning_ignore("unused_signal")
+signal rocket_bit_go_bang_bang(position:Vector3)

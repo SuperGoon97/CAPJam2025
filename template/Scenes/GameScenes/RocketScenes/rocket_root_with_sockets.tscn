@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_lk16e"]
 
 [node name="RocketBase" instance=ExtResource("1_qe50t")]
-mass = 0.75
+rand_deceleartion_force_mod = 20.0
 
 [node name="MeshInstance3D" parent="." index="1"]
 material_override = ExtResource("2_5fft1")

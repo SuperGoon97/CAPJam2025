@@ -1,3 +1,5 @@
+RocketPartTankResource
+RocketPartThrusterResource
 StandardMaterial3D
 Resource
 Environment

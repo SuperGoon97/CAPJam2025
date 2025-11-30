@@ -82,7 +82,8 @@ jolt_physics_3d/simulation/velocity_steps=30
 jolt_physics_3d/simulation/position_steps=20
 jolt_physics_3d/simulation/penetration_slop=0.01
 jolt_physics_3d/motion_queries/recovery_iterations=8
-jolt_physics_3d/limits/max_linear_velocity=50.0
+jolt_physics_3d/limits/max_linear_velocity=200.0
+3d/default_angular_damp=0.0
 3d/solver/solver_iterations=64
 3d/solver/contact_max_separation=0.01
 

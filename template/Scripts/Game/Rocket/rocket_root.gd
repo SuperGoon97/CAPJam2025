@@ -5,7 +5,7 @@ signal do_socket_overlap_check
 const PARTICLES_EXPLOSION = preload("res://Assets/Particles/particles_explosion.tscn")
 
 @export var starting_fuel:float = 100.0
-
+@export var rand_deceleartion_force_mod:float = 5.0
 var _parent:RigidBody3D = null
 var _attached_socket:RocketSocketPoint
 var _array_joints:Array[PinJoint3D]
@@ -13,7 +13,7 @@ var _scoring_part:bool = false
 var _launched:bool = false
 var _exploded:bool = false
 
-var _total_fuel:float = 0.0:
+@export_storage var _total_fuel:float = 0.0:
 	set(value):
 		_total_fuel = value
 		GVar.signal_bus.total_fuel_changed.emit(_total_fuel)
@@ -25,7 +25,15 @@ var current_fuel:float = 0.0:
 		#print_rich("[color=brown] current fuel = " + str(current_fuel) + " %" + str(current_fuel_percentage*100.0) +"[/color]")
 var current_fuel_percentage:float = 0.0
 
+var rocket_speed:float = 0.0:
+	set(value):
+		rocket_speed = value
+		GVar.signal_bus.meters_per_second_changed.emit(rocket_speed)
+var last_frame_pos:Vector3 = Vector3(0.0,0.0,0.0)
+
 var do_once_sold:bool = true
+var do_once_push:bool = true
+
 var resource_data:RocketPartResource
 @onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
 @onready var rocket_socket_check_area: RocketArea3D = $RocketSocketCheckArea
@@ -47,11 +55,11 @@ func _ready() -> void:
 		
 	_total_fuel += starting_fuel
 
-func new_rocket_part():
-	mass += 1.0
+func new_rocket_part(data:RocketPartResource):
+	mass += data.mass
 
-func rocket_part_sold(_args):
-	mass -= 1.0
+func rocket_part_sold(rocket_part:RocketPart):
+	mass -= rocket_part.resource_data.mass
 
 func fuel_tank_added(fuel:float):
 	_total_fuel += fuel
@@ -63,13 +71,20 @@ func set_launched():
 	current_fuel = _total_fuel
 	_launched = true
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if _launched:
 		for node in _array_joints:
 			if global_position.distance_to(node.global_position) > 1.0:
 				explode()
-		if _scoring_part:
-			GVar.signal_bus.rocket_root_height_changed.emit(global_position.y)
+		GVar.signal_bus.rocket_root_height_changed.emit(global_position.y)
+		if !last_frame_pos == Vector3.ZERO:
+			var distance_traveled = global_position.distance_to(last_frame_pos)
+			var _temp_rocket_speed = distance_traveled/delta
+			if _temp_rocket_speed < rocket_speed:
+				print("deceleration_detected")
+				apply_torque(Vector3(randf_range(-1.0,1.0) * rand_deceleartion_force_mod,randf_range(-1.0,1.0) * rand_deceleartion_force_mod,randf_range(-1.0,1.0) * rand_deceleartion_force_mod)*delta)
+			rocket_speed = distance_traveled/delta
+	last_frame_pos = global_position
 
 func explode():
 	if !_exploded:
@@ -78,6 +93,7 @@ func explode():
 		var new_particle:Node3D = PARTICLES_EXPLOSION.instantiate()
 		GVar.active_scene.add_child(new_particle)
 		new_particle.global_position = global_position
+		GVar.signal_bus.rocket_bit_go_bang_bang.emit(global_position)
 		call_deferred("queue_free")
 
 func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:float):

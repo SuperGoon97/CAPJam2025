@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4bi17bae5r2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c2out1072snu7" path="res://Assets/Meshes/Tree-Texture_BezierCurve_002.res" id="1_n8dis"]
+[ext_resource type="Script" uid="uid://cyv4f80d6368e" path="res://multi_mesh_instance_3d.gd" id="2_13san"]
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D"]
+script = ExtResource("2_13san")
+mesh_scene = ExtResource("1_n8dis")
+instance_count = 250
+spawn_radius = 50.0
