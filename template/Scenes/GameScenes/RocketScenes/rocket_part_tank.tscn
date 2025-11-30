@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_6idbs"]
 [ext_resource type="Material" uid="uid://dm0104618xb80" path="res://Assets/Materials/tank_material.tres" id="3_6idbs"]
 [ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="3_6opic"]
+[ext_resource type="ArrayMesh" uid="uid://pe88kdotam5g" path="res://Assets/Meshes/RocketTankPart.res" id="4_6opic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_rvr5u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
 size = Vector3(1.01, 1.01, 1.01)
@@ -21,8 +20,9 @@ prefered_socket = NodePath("RocketSocketPoint5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.54344594, 0)
 material_override = ExtResource("3_6idbs")
-mesh = SubResource("BoxMesh_rvr5u")
+mesh = ExtResource("4_6opic")
 
 [node name="RocketSocketCheckArea" type="Area3D" parent="."]
 script = ExtResource("3_6opic")
