@@ -2,7 +2,6 @@
 
 [ext_resource type="Shader" uid="uid://b8t7cdf0pme87" path="res://Scripts/Resources/Materials/screen_transition_diamond_horizontal.gdshader" id="1_xasf1"]
 
-
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_xasf1")

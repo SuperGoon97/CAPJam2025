@@ -81,9 +81,7 @@ func _physics_process(delta: float) -> void:
 			var distance_traveled = global_position.distance_to(last_frame_pos)
 			var _temp_rocket_speed = distance_traveled/delta
 			if _temp_rocket_speed < rocket_speed:
-				#if do_once_push:
 				print("deceleration_detected")
-				do_once_push = false
 				apply_torque(Vector3(randf_range(-1.0,1.0) * rand_deceleartion_force_mod,randf_range(-1.0,1.0) * rand_deceleartion_force_mod,randf_range(-1.0,1.0) * rand_deceleartion_force_mod)*delta)
 			rocket_speed = distance_traveled/delta
 	last_frame_pos = global_position
@@ -95,6 +93,7 @@ func explode():
 		var new_particle:Node3D = PARTICLES_EXPLOSION.instantiate()
 		GVar.active_scene.add_child(new_particle)
 		new_particle.global_position = global_position
+		GVar.signal_bus.rocket_bit_go_bang_bang.emit(global_position)
 		call_deferred("queue_free")
 
 func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:float):

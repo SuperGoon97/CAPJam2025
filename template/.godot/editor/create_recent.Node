@@ -1,3 +1,5 @@
+Node3D
+AudioStreamPlayer3D
 WorldEnvironment
 FogVolume
 VBoxContainer
@@ -6,10 +8,7 @@ GPUParticles3D
 MeshInstance3D
 CPUParticles3D
 GPUParticles2D
-Node3D
 Label
 ProgressBar
 CollisionShape3D
 Control
-Generic6DOFJoint3D
-PinJoint3D

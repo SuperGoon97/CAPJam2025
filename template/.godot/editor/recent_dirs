@@ -1,3 +1,4 @@
+res://Scripts/Components
 res://Scripts/Resources/GameResources/ShipResources
 res://Scripts/Resources/Enviroments
 res://Assets
@@ -8,7 +9,6 @@ res://Assets/Particles
 res://Scripts/Game/Rocket
 res://Scripts/UI
 res://Scenes/UI
-res://Scripts/Components
 res://Scripts/UI/Shop
 res://Scripts/Game/Camera
 res://Scenes/UI/Game

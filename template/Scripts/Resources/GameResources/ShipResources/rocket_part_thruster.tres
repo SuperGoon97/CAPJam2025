@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="RocketPartThrusterResource" load_steps=3 format=3 uid="uid://b2oqjq5cdwcu1"]
+[gd_resource type="Resource" script_class="RocketPartThrusterResource" load_steps=6 format=3 uid="uid://b2oqjq5cdwcu1"]
 
+[ext_resource type="AudioStream" uid="uid://dsm7vxy8amd1k" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_block_discard.wav" id="1_1jtkx"]
 [ext_resource type="Texture2D" uid="uid://dwqorcsgic5o8" path="res://Assets/Sprites/Cube_Module_2_2.png" id="1_r3mbp"]
 [ext_resource type="Script" uid="uid://b4yssaho5idme" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_thruster_resource.gd" id="1_w425w"]
+[ext_resource type="AudioStream" uid="uid://n2td2u74pdrr" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_block_pickup.wav" id="2_l8css"]
+[ext_resource type="AudioStream" uid="uid://bqav38jf7c08k" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_block_place.wav" id="4_g8c4o"]
 
 [resource]
 script = ExtResource("1_w425w")
@@ -9,4 +12,7 @@ scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_part_thruster.t
 icon = ExtResource("1_r3mbp")
 cost = 500
 mass = 0.5
+pickup_sound = ExtResource("2_l8css")
+place_sound = ExtResource("4_g8c4o")
+discard_sound = ExtResource("1_1jtkx")
 metadata/_custom_type_script = "uid://b4yssaho5idme"

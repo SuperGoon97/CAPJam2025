@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="RocketPartResource" load_steps=3 format=3 uid="uid://h5rcays0b5hs"]
+[gd_resource type="Resource" script_class="RocketPartResource" load_steps=6 format=3 uid="uid://h5rcays0b5hs"]
 
 [ext_resource type="Texture2D" uid="uid://6hrt0sv8vg3n" path="res://Assets/Sprites/t_icon_rubberDuck.png" id="1_8jm6c"]
+[ext_resource type="AudioStream" uid="uid://cnoh8t7jsahcf" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_duck_discard.wav" id="1_hivap"]
 [ext_resource type="Script" uid="uid://b4ynbiek7cbdq" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_resource.gd" id="2_3fgos"]
+[ext_resource type="AudioStream" uid="uid://dkf71tr7c4oa6" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_duck_pickup.wav" id="3_mj1og"]
+[ext_resource type="AudioStream" uid="uid://ckhgkqf6nnshk" path="res://Assets/Audio/AudioFiles/SFX/snd_rocketPart_duck_place.wav" id="4_warmn"]
 
 [resource]
 script = ExtResource("2_3fgos")
@@ -9,4 +12,7 @@ scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_part_duck.tscn"
 icon = ExtResource("1_8jm6c")
 cost = 6700
 mass = 0.0
+pickup_sound = ExtResource("3_mj1og")
+place_sound = ExtResource("4_warmn")
+discard_sound = ExtResource("1_hivap")
 metadata/_custom_type_script = "uid://b4ynbiek7cbdq"

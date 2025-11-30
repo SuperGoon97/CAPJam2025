@@ -14,6 +14,7 @@ size = Vector3(1.01, 1.01, 1.01)
 
 [node name="RocketRoot" type="RigidBody3D" groups=["RocketPart"]]
 physics_material_override = SubResource("PhysicsMaterial_mlwr4")
+gravity_scale = 2.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 64

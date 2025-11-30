@@ -6,7 +6,7 @@ signal do_socket_overlap_check
 signal data_set
 
 var do_once_sold:bool = true
-var resource_data:RocketPartResource:
+@export_storage var resource_data:RocketPartResource:
 	set(value):
 		resource_data = value
 		data_set.emit()
@@ -26,10 +26,12 @@ func explode():
 		var new_particle:Node3D = PARTICLES_EXPLOSION.instantiate()
 		GVar.active_scene.add_child(new_particle)
 		new_particle.global_position = global_position
+		GVar.signal_bus.rocket_bit_go_bang_bang.emit(global_position)
 		call_deferred("queue_free")
 
 
 func setup(attached_socket:RocketSocketPoint):
+	GVar.signal_bus.rocket_part_added.emit(resource_data)
 	var temp_pos = attached_socket.get_parent().global_position
 	var direction_vec:Vector3 = Vector3(attached_socket.global_position - temp_pos).normalized().round()
 	var half_rocket_bounds:Vector3

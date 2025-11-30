@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b84amjk0syb81"]
+[gd_scene load_steps=13 format=3 uid="uid://b84amjk0syb81"]
 
 [ext_resource type="Script" uid="uid://8x0m53kjcw14" path="res://Scripts/Scene Management/scene_base_3d.gd" id="1_gosoi"]
 [ext_resource type="Script" uid="uid://5bngowlite7i" path="res://Scripts/Scene Management/world_origin.gd" id="2_nwiwi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Environment" uid="uid://lv771tblxdxi" path="res://Scripts/Resources/Enviroments/default_enviroment.tres" id="3_ah5qe"]
 [ext_resource type="Material" uid="uid://d03e7tlal2wwt" path="res://Assets/Materials/floor_material.tres" id="3_ln5ex"]
 [ext_resource type="Script" uid="uid://dwtfw48mq3nwf" path="res://Scripts/Game/Camera/camera_controller.gd" id="4_ot84h"]
+[ext_resource type="Script" uid="uid://cj3v8y6t2uswp" path="res://Scripts/Components/shaker.gd" id="6_fk5gg"]
 [ext_resource type="PackedScene" uid="uid://dq71jhoy1v8ij" path="res://Scenes/GameScenes/RocketScenes/rocket_root_with_sockets.tscn" id="6_t0qif"]
 [ext_resource type="Script" uid="uid://b3vpayynyeadx" path="res://Scripts/Game/Camera/main_camera.gd" id="6_xxass"]
 
@@ -65,13 +66,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
 script = ExtResource("4_ot84h")
 rotation_angle = 45.0
 
-[node name="Main Camera" type="Camera3D" parent="World Origin/CameraPivotPoint" groups=["MainCamera"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-script = ExtResource("6_xxass")
-
 [node name="CameraRotateCoolOff" type="Timer" parent="World Origin/CameraPivotPoint"]
 wait_time = 0.5
 one_shot = true
+
+[node name="Shaker" type="Node3D" parent="World Origin/CameraPivotPoint"]
+script = ExtResource("6_fk5gg")
+
+[node name="Main Camera" type="Camera3D" parent="World Origin/CameraPivotPoint/Shaker" groups=["MainCamera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+script = ExtResource("6_xxass")
 
 [node name="UpperSceneCanvas" type="CanvasLayer" parent="."]
 script = ExtResource("3_4ppc3")

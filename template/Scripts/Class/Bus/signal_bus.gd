@@ -51,3 +51,7 @@ signal meters_per_second_changed(value:float)
 
 @warning_ignore("unused_signal")
 signal root_destroyed
+@warning_ignore("unused_signal")
+signal new_rocket_created
+@warning_ignore("unused_signal")
+signal rocket_bit_go_bang_bang(position:Vector3)

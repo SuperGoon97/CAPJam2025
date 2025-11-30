@@ -11,7 +11,7 @@ var desired_rot:float = 0.0
 var last_x:float = 0.0
 var child_cam:RocketCamera
 
-@onready var ship_root = get_tree().get_first_node_in_group("ShipRoot")
+@onready var ship_root = get_rocket_root()
 var look_at_mode = false
 
 func _ready() -> void:
@@ -21,6 +21,7 @@ func _ready() -> void:
 	GVar.signal_bus.rotate_cam_left.connect(_rotate_left_clicked)
 	GVar.signal_bus.rotate_cam_right.connect(_rotate_right_clicked)
 	GVar.signal_bus.rocket_launch.connect(_rocket_launched)
+	GVar.signal_bus.new_rocket_created.connect(new_rocket)
 	child_cam = get_tree().get_first_node_in_group("MainCamera")
 	desired_position = ship_root.global_position
 
@@ -54,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	
 	if look_at_mode:
 		if ship_root:
-			global_position = global_position.move_toward(ship_root.global_position,delta * pow(global_position.distance_to(ship_root.global_position),2))
+			global_position = global_position.move_toward(ship_root.global_position,delta * pow(global_position.distance_to(ship_root.global_position),3))
 	else:
 		var _distance_to_midpoint = global_position.distance_to(desired_position)
 		if  _distance_to_midpoint > camera_distance_to_midpoint_tolerance:
@@ -79,5 +80,12 @@ func _rotate_right_clicked():
 func _rocket_launched():
 	look_at_mode = true
 
+func new_rocket():
+	look_at_mode = false
+	ship_root = get_rocket_root()
+
 func _rocket_part_added(_args):
 	desired_position = child_cam.get_center_point()
+
+func get_rocket_root() -> Node:
+	return get_tree().get_first_node_in_group("ShipRoot")
