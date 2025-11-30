@@ -10,7 +10,7 @@
 size = Vector3(1.1, 1.1, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
-size = Vector3(1.01, 1.01, 1.01)
+size = Vector3(1.2, 1.2, 1.2)
 
 [node name="RocketBodyBlock" type="CollisionShape3D" groups=["RocketPart"]]
 shape = SubResource("BoxShape3D_vbojs")
