@@ -89,5 +89,6 @@ jolt_physics_3d/limits/max_linear_velocity=50.0
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-viewport/transparent_background=true
 2d/snap/snap_2d_transforms_to_pixel=true
+environment/defaults/default_environment="uid://lv771tblxdxi"
+viewport/defaults/default_environment=""
