@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RocketPartResource" load_steps=3 format=3 uid="uid://cx5fvl3gysa2a"]
 
-[ext_resource type="Texture2D" uid="uid://dym88tjp4vss3" path="res://Assets/Sprites/t_ui_icon_block.png" id="1_cnewi"]
+[ext_resource type="Texture2D" uid="uid://dq7w5cudsba87" path="res://Assets/Sprites/Cube_Module_2_1.png" id="1_cnewi"]
 [ext_resource type="Script" uid="uid://b4ynbiek7cbdq" path="res://Scripts/Resources/GameResources/ShipResources/rocket_part_resource.gd" id="2_xwhs5"]
 
 [resource]
