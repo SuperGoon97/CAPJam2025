@@ -1,3 +1,5 @@
+WorldEnvironment
+FogVolume
 VBoxContainer
 HBoxContainer
 GPUParticles3D
@@ -11,5 +13,3 @@ CollisionShape3D
 Control
 Generic6DOFJoint3D
 PinJoint3D
-TextureRect
-ButtonBase
