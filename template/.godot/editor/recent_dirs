@@ -1,3 +1,5 @@
+F:/TestBuilds
+res://Assets/Sprites
 res://Scripts/Components
 res://Scripts/Resources/GameResources/ShipResources
 res://Scripts/Resources/Enviroments
@@ -16,7 +18,6 @@ res://Assets/Materials
 res://Scenes/GameScenes/RocketScenes
 res://
 res://Scenes/Components
-res://Assets/Sprites
 res://Assets/Audio
 res://Scripts/Globals
 res://Assets/Audio/AudioFiles

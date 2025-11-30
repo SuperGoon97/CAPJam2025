@@ -32,7 +32,7 @@ var camera_warm_up_rate:float = 10.0
 func _ready() -> void:
 	await GVar.scene_manager.game_ready
 	_setup_camera_noise()
-	GVar.signal_bus.rocket_fuel_changed.connect(rocket_launched)
+	#GVar.signal_bus.rocket_fuel_changed.connect(rocket_launched)
 	GVar.signal_bus.rocket_bit_go_bang_bang.connect(rocket_bang)
 
 func _physics_process(delta: float) -> void:
@@ -45,9 +45,9 @@ func _physics_process(delta: float) -> void:
 			camera_shake_warm_up = 0.0
 
 
-func rocket_launched(..._args):
-	if camera_shake_strength >= 1.5 : return
-	add_camera_shake()
+#func rocket_launched(..._args):
+	#if camera_shake_strength >= 1.5 : return
+	#add_camera_shake()
 func rocket_bang(..._args):
 	add_camera_shake()
 

@@ -13,7 +13,7 @@ var _scoring_part:bool = false
 var _launched:bool = false
 var _exploded:bool = false
 
-var _total_fuel:float = 0.0:
+@export_storage var _total_fuel:float = 0.0:
 	set(value):
 		_total_fuel = value
 		GVar.signal_bus.total_fuel_changed.emit(_total_fuel)
