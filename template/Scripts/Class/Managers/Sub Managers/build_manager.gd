@@ -1,6 +1,6 @@
 class_name BuildManager extends ManagerBase
 
-@export var starting_score:int = 10000
+@export var starting_score:int = 500
 @export var height_to_money_ratio:float = 10.0
 var _hovered_socket:RocketSocketPoint
 var _player_held_rocket_bit:RocketPartResource
@@ -15,7 +15,7 @@ var highscore_height:float = 0.0:
 
 var highscore_height_int:int = 0:
 	set(value):
-		max_score += abs(highscore_height_int - value)
+		max_score += (abs(highscore_height_int - value)*height_to_money_ratio)
 		highscore_height_int = value
 		GVar.signal_bus.highscore_height_changed.emit(current_height)
 		#print_rich("[color=gold] new highscore height = "+ str(highscore_height_int) + "[/color]")

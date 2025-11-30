@@ -8,17 +8,19 @@
 rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kunfd"]
+size = Vector3(1.2, 1.2, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dudsn"]
 size = Vector3(1.01, 1.01, 1.01)
 
 [node name="RocketRoot" type="RigidBody3D" groups=["RocketPart"]]
 physics_material_override = SubResource("PhysicsMaterial_mlwr4")
-gravity_scale = 2.0
+gravity_scale = 3.0
 freeze = true
 contact_monitor = true
 max_contacts_reported = 64
 script = ExtResource("1_k7mrb")
+rand_deceleartion_force_mod = 10.0
 
 [node name="RocketCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_kunfd")

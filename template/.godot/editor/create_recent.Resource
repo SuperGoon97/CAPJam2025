@@ -1,3 +1,5 @@
+GradientTexture2D
+GradientTexture1D
 RocketPartTankResource
 RocketPartThrusterResource
 StandardMaterial3D

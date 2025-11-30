@@ -1,8 +1,9 @@
+F:/TestBuilds
+res://Scripts/Resources/Gradients
 res://
 res://Assets/Meshes
 res://Scenes/AudioScenes
 res://Scripts/UI
-F:/TestBuilds
 res://Assets/Sprites
 res://Scripts/Components
 res://Scripts/Resources/GameResources/ShipResources
@@ -19,4 +20,3 @@ res://Scenes/UI/Game
 res://Assets/Materials
 res://Scenes/GameScenes/RocketScenes
 res://Scenes/Components
-res://Assets/Audio

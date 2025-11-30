@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b84amjk0syb81"]
+[gd_scene load_steps=22 format=3 uid="uid://b84amjk0syb81"]
 
 [ext_resource type="Script" uid="uid://8x0m53kjcw14" path="res://Scripts/Scene Management/scene_base_3d.gd" id="1_gosoi"]
 [ext_resource type="Script" uid="uid://5bngowlite7i" path="res://Scripts/Scene Management/world_origin.gd" id="2_nwiwi"]
@@ -10,8 +10,17 @@
 [ext_resource type="Script" uid="uid://cj3v8y6t2uswp" path="res://Scripts/Components/shaker.gd" id="6_fk5gg"]
 [ext_resource type="PackedScene" uid="uid://dq71jhoy1v8ij" path="res://Scenes/GameScenes/RocketScenes/rocket_root_with_sockets.tscn" id="6_t0qif"]
 [ext_resource type="Script" uid="uid://b3vpayynyeadx" path="res://Scripts/Game/Camera/main_camera.gd" id="6_xxass"]
+[ext_resource type="Material" uid="uid://bqcmptvw4yal6" path="res://Assets/Materials/body_material.tres" id="9_7ccal"]
+[ext_resource type="ArrayMesh" uid="uid://c2xwq3wmsgg7k" path="res://Assets/Meshes/RocketBodyPart.res" id="10_hl5e6"]
+[ext_resource type="PackedScene" uid="uid://b8xcjse1ltgf1" path="res://house.tscn" id="11_084bl"]
+[ext_resource type="Material" uid="uid://dm0104618xb80" path="res://Assets/Materials/tank_material.tres" id="11_dn76t"]
+[ext_resource type="ArrayMesh" uid="uid://b5aci73hwsh0k" path="res://Assets/Meshes/RocketTankPart.res" id="12_wtkwv"]
+[ext_resource type="Material" uid="uid://ce2t062ttaiji" path="res://Assets/Materials/thruster_material.tres" id="13_uov1g"]
+[ext_resource type="ArrayMesh" uid="uid://nsusnxip8mj7" path="res://Assets/Meshes/RocketThrusterPart.res" id="14_amnwc"]
+[ext_resource type="ArrayMesh" uid="uid://du5r4d0pdtt3q" path="res://Assets/Meshes/mdl_rubber_duck.res" id="15_px4qs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_uumfr"]
+material = ExtResource("3_ln5ex")
 size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ln5ex"]
@@ -52,6 +61,7 @@ transform = Transform3D(0.80617607, 0.41837782, -0.41837773, 1.4746386e-08, 0.70
 light_color = Color(0.89969856, 0.885531, 0.7715514, 1)
 light_energy = 4.0
 light_indirect_energy = 3.0
+shadow_enabled = true
 directional_shadow_pancake_size = 20.9
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="World Origin/Enviroment"]
@@ -84,6 +94,25 @@ instance_count = 1000
 spawn_radius = 1000.0
 inner_clearance = 5.0
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9679432, 0)
+material_override = ExtResource("9_7ccal")
+mesh = ExtResource("10_hl5e6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9679432, -2.770835)
+material_override = ExtResource("11_dn76t")
+mesh = ExtResource("12_wtkwv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.9679432, -5.0695)
+material_override = ExtResource("13_uov1g")
+mesh = ExtResource("14_amnwc")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World Origin"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -3.9679432, -8.007132)
+mesh = ExtResource("15_px4qs")
+
 [node name="UpperSceneCanvas" type="CanvasLayer" parent="."]
 script = ExtResource("3_4ppc3")
 _layer = 3
@@ -100,3 +129,6 @@ gravity_scale = 0.33
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8.324999)
 shape = 4
 material = SubResource("FogMaterial_xxass")
+
+[node name="house" parent="." instance=ExtResource("11_084bl")]
+transform = Transform3D(0.65459573, 0, 0.7559792, 0, 1, 0, -0.7559792, 0, 0.65459573, -9.798564, 0.66637325, -5.515826)

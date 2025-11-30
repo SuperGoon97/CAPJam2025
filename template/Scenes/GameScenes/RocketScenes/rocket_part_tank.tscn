@@ -20,7 +20,7 @@ fuel = 200.0
 prefered_socket = NodePath("RocketSocketPoint5")
 
 [node name="RocketSocketPoint5" parent="." instance=ExtResource("2_6idbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5626243, -0.004121065)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.54344594, 0)
@@ -35,4 +35,4 @@ shape = SubResource("BoxShape3D_qhk5o")
 debug_color = Color(0.32697475, 0.6241081, 3.85046e-07, 0.41960785)
 
 [node name="RocketSocketPoint6" parent="." instance=ExtResource("2_6idbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5220194, -0.00824213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5413531, -0.00824213)

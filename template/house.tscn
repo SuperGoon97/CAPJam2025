@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8xcjse1ltgf1"]
+
+[ext_resource type="PackedScene" uid="uid://dvs2d5tb7oe8t" path="res://Assets/Meshes/S_House.blend" id="1_hfkix"]
+[ext_resource type="Material" uid="uid://bu7pg6818jciw" path="res://Assets/Materials/house_material.tres" id="2_metfq"]
+
+[node name="house" instance=ExtResource("1_hfkix")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Cube_001" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Sphere" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Sphere_001" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Cube_002" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Cube_003" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Cube_004" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_metfq")
+
+[node name="Cube_005" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_metfq")

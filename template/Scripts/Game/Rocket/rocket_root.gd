@@ -32,7 +32,7 @@ var rocket_speed:float = 0.0:
 var last_frame_pos:Vector3 = Vector3(0.0,0.0,0.0)
 
 var do_once_sold:bool = true
-var do_once_push:bool = true
+var do_once_increase_gravity:bool = true
 
 var resource_data:RocketPartResource
 @onready var rocket_collision_shape: CollisionShape3D = $RocketCollisionShape
@@ -73,6 +73,9 @@ func set_launched():
 
 func _physics_process(delta: float) -> void:
 	if _launched:
+		if roundf(current_fuel) == 0 and global_position.y < last_frame_pos.y and do_once_increase_gravity:
+			set_deferred("gravity_scale",gravity_scale * 3)
+			do_once_increase_gravity = false
 		for node in _array_joints:
 			if global_position.distance_to(node.global_position) > 1.0:
 				explode()
@@ -81,7 +84,6 @@ func _physics_process(delta: float) -> void:
 			var distance_traveled = global_position.distance_to(last_frame_pos)
 			var _temp_rocket_speed = distance_traveled/delta
 			if _temp_rocket_speed < rocket_speed:
-				print("deceleration_detected")
 				apply_torque(Vector3(randf_range(-1.0,1.0) * rand_deceleartion_force_mod,randf_range(-1.0,1.0) * rand_deceleartion_force_mod,randf_range(-1.0,1.0) * rand_deceleartion_force_mod)*delta)
 			rocket_speed = distance_traveled/delta
 	last_frame_pos = global_position

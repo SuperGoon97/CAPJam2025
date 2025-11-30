@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d0w34lajhpak7" path="res://Assets/Textures/Tree/Roughness.png" id="6_pwu5h"]
 
 [resource]
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_5f22h")
 metallic = 0.5
 metallic_specular = 0.25

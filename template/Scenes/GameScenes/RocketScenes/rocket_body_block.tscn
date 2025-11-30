@@ -7,7 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c2xwq3wmsgg7k" path="res://Assets/Meshes/RocketBodyPart.res" id="3_qhk5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
-size = Vector3(1.1, 1.1, 1.1)
+size = Vector3(1.2, 1.2, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
 size = Vector3(1.01, 1.01, 1.01)
@@ -17,22 +17,22 @@ shape = SubResource("BoxShape3D_vbojs")
 script = ExtResource("1_rvr5u")
 
 [node name="RocketSocketPoint" parent="." instance=ExtResource("2_xcyed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.52591693)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6013726)
 
 [node name="RocketSocketPoint2" parent="." instance=ExtResource("2_xcyed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5293146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5993806)
 
 [node name="RocketSocketPoint3" parent="." instance=ExtResource("2_xcyed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51826733, 0.005548835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6071973, 0.005548835)
 
 [node name="RocketSocketPoint4" parent="." instance=ExtResource("2_xcyed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5224347, 0, 0.0019210577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600585, 0, 0.0019210577)
 
 [node name="RocketSocketPoint5" parent="." instance=ExtResource("2_xcyed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6087337, -0.004121065)
 
 [node name="RocketSocketPoint6" parent="." instance=ExtResource("2_xcyed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5218751, 0, -0.004120946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5811617, 0, -0.004120946)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
