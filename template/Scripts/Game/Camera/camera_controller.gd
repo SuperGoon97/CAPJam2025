@@ -79,5 +79,5 @@ func _rotate_right_clicked():
 func _rocket_launched():
 	look_at_mode = true
 
-func _rocket_part_added():
+func _rocket_part_added(_args):
 	desired_position = child_cam.get_center_point()

@@ -1,3 +1,4 @@
+res://Scripts/Resources/GameResources/ShipResources
 res://Scripts/Resources/Enviroments
 res://Assets
 res://Assets/Meshes
@@ -13,7 +14,6 @@ res://Scripts/Game/Camera
 res://Scenes/UI/Game
 res://Assets/Materials
 res://Scenes/GameScenes/RocketScenes
-res://Scripts/Resources/GameResources/ShipResources
 res://
 res://Scenes/Components
 res://Assets/Sprites

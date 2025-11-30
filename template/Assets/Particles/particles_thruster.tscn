@@ -1,4 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://y0wmfisf3hul"]
+[gd_scene load_steps=21 format=3 uid="uid://y0wmfisf3hul"]
+
+[ext_resource type="Script" uid="uid://cvnyymips3t8o" path="res://Assets/Particles/particles_thruster.gd" id="1_bnkxm"]
 
 [sub_resource type="Gradient" id="Gradient_dgbnk"]
 offsets = PackedFloat32Array(0, 0.9745763)
@@ -103,9 +105,11 @@ top_radius = 0.1
 bottom_radius = 0.0
 
 [node name="Thruster" type="Node3D"]
+script = ExtResource("1_bnkxm")
 
 [node name="Fire" type="GPUParticles3D" parent="."]
-amount = 12
+emitting = false
+amount = 36
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xqpah")
 draw_pass_1 = SubResource("SphereMesh_rtvmr")

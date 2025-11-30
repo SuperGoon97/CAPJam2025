@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c2xwq3wmsgg7k" path="res://Assets/Meshes/RocketBodyPart.res" id="3_qhk5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
+size = Vector3(1.1, 1.1, 1.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
 size = Vector3(1.01, 1.01, 1.01)

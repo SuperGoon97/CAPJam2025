@@ -3,7 +3,12 @@ extends ManagerBase
 
 signal all_managers_ready()
 
-var managers_to_load:Array[GVar.SUB_MANAGERS] = [GVar.SUB_MANAGERS.UI_MANAGER,GVar.SUB_MANAGERS.INPUT_MANAGER,GVar.SUB_MANAGERS.BUILD_MANAGER]
+var managers_to_load:Array[GVar.SUB_MANAGERS] = [
+	GVar.SUB_MANAGERS.UI_MANAGER,
+	GVar.SUB_MANAGERS.INPUT_MANAGER,
+	GVar.SUB_MANAGERS.BUILD_MANAGER,
+	GVar.SUB_MANAGERS.SOUND_MANAGER,
+	]
 var manager_dict:Dictionary[GVar.SUB_MANAGERS,ManagerBase]
 var managers_ready_state_dict:Dictionary
 

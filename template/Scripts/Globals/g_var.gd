@@ -4,6 +4,7 @@ enum SUB_MANAGERS {
 	UI_MANAGER,
 	INPUT_MANAGER,
 	BUILD_MANAGER,
+	SOUND_MANAGER
 }
 
 ## Layer enums for quick layer selection
@@ -24,6 +25,7 @@ static var sub_manager_dict : Dictionary = {
 	SUB_MANAGERS.UI_MANAGER:UIManager,
 	SUB_MANAGERS.INPUT_MANAGER:InputManager,
 	SUB_MANAGERS.BUILD_MANAGER:BuildManager,
+	SUB_MANAGERS.SOUND_MANAGER:SoundManager,
 }
 
 ## int assosciated with the Layer

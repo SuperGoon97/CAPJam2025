@@ -6,10 +6,10 @@ func _init(_texture:CompressedTexture2D):
 	texture = _texture
 	GVar.signal_bus.rocket_part_added.connect(_destroy)
 	GVar.signal_bus.player_right_click.connect(_destroy)
-	GVar.signal_bus.player_release_left_click.connect(_destroy)
+	GVar.signal_bus.player_release_left_click.connect(_destroy.bind(null))
 
 func _physics_process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 
-func _destroy():
+func _destroy(_args):
 	call_deferred("queue_free")

@@ -40,7 +40,7 @@ func _game_ready():
 	GVar.signal_bus.mouse_exited_socket.connect(mouse_exit_socket)
 	GVar.signal_bus.socket_clicked.connect(socket_clicked)
 	GVar.signal_bus.player_grabbed_rocket_part_from_shop.connect(set_player_held_rocket_bit)
-	GVar.signal_bus.rocket_part_added.connect(set_player_held_rocket_bit.bind(null))
+	GVar.signal_bus.rocket_part_added.connect(player_added_rocket_bit)
 	GVar.signal_bus.player_right_click.connect(right_click_handler)
 	GVar.signal_bus.rocket_root_height_changed.connect(set_current_height)
 	GVar.signal_bus.rocket_part_sold.connect(rocket_part_sold)
@@ -69,7 +69,7 @@ func socket_clicked(_socket:RocketSocketPoint):
 		new_rocket_part.owner = ship_root
 		new_rocket_part.resource_data = _player_held_rocket_bit
 		new_rocket_part.setup(_socket)
-		GVar.signal_bus.rocket_part_added.emit()
+		GVar.signal_bus.rocket_part_added.emit(_player_held_rocket_bit)
 
 func rocket_part_sold(rocket_part:RocketPart):
 	print("sold")
@@ -87,3 +87,6 @@ func left_click_released_handler():
 
 func set_player_held_rocket_bit(rocket_bit:RocketPartResource):
 	_player_held_rocket_bit = rocket_bit
+
+func player_added_rocket_bit(_rocket_bit:RocketPartResource):
+	_player_held_rocket_bit = null

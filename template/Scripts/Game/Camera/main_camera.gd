@@ -46,7 +46,7 @@ func setup():
 	max_pos_z = root_rocket.global_position.z
 	max_mpos_z = root_rocket.global_position.z
 
-func recalculate_size():
+func recalculate_size(_args):
 	var array_rocket_parts:Array[Node3D] = get_rocket_part_array()
 	for rocket in array_rocket_parts:
 		if rocket.global_position.y > max_pos_y:

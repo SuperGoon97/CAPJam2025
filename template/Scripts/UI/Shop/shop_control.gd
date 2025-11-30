@@ -7,9 +7,9 @@ extends Control
 func _ready() -> void:
 	GVar.signal_bus.physics_enabled.connect(_hideShopMenu)
 	GVar.signal_bus.rocket_part_added.connect(_changeFuelCapacity)
-	_changeFuelCapacity()
+	_changeFuelCapacity(null)
 func _hideShopMenu() -> void:
 	visible = false
 	
-func _changeFuelCapacity() -> void:
+func _changeFuelCapacity(_args) -> void:
 	label.text = "Fuel: " + str(int(round(rocket_root._total_fuel))) + "L"
