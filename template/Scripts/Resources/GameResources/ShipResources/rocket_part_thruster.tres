@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("1_w425w")
-thrust = 1300.0
+thrust = 1600.0
 fuel_cost_per_delta = 19.0
 scene_path_string = "res://Scenes/GameScenes/RocketScenes/rocket_part_thruster.tscn"
 icon = ExtResource("1_r3mbp")
