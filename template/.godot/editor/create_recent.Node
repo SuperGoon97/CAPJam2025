@@ -1,5 +1,6 @@
-Node3D
+MultiMeshInstance3D
 AudioStreamPlayer3D
+Node3D
 WorldEnvironment
 FogVolume
 VBoxContainer
@@ -11,4 +12,3 @@ GPUParticles2D
 Label
 ProgressBar
 CollisionShape3D
-Control

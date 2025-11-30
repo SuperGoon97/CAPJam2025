@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ypps07vkid4w"]
+[gd_scene load_steps=10 format=3 uid="uid://ypps07vkid4w"]
 
 [ext_resource type="Script" uid="uid://brc0amh3blr0r" path="res://Scripts/Game/Rocket/rocket_thruster.gd" id="1_brtww"]
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_brtww"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="3_jarix"]
 [ext_resource type="ArrayMesh" uid="uid://nsusnxip8mj7" path="res://Assets/Meshes/RocketThrusterPart.res" id="4_jarix"]
 [ext_resource type="PackedScene" uid="uid://y0wmfisf3hul" path="res://Assets/Particles/particles_thruster.tscn" id="6_u5v1i"]
+[ext_resource type="PackedScene" uid="uid://4j6slkd7rbtb" path="res://Scenes/AudioScenes/thruster_audio.tscn" id="7_3chf7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
 size = Vector3(0.9, 0.9, 0.9)
@@ -38,3 +39,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.67567927, 0)
 
 [node name="Thruster" parent="." instance=ExtResource("6_u5v1i")]
 transform = Transform3D(1, 0, 0, 0, 0.99951255, 0.031218866, 0, -0.031218866, 0.99951255, -0.042117655, -0.13652158, 0.01969558)
+
+[node name="ThrusterAudio" parent="." instance=ExtResource("7_3chf7")]
