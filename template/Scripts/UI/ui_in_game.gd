@@ -1,6 +1,7 @@
 extends Control
 
-@onready var label: Label = $Label
+@onready var label: Label = $HBoxContainer/Label
+@onready var label_2: Label = $HBoxContainer/Label2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +13,4 @@ func _makeVisible() -> void:
 	
 func _heightChanged(score:float):
 	label.text = str(int(round(score))) + "m"
+	label_2.text = str(int(round(GVar.build_manager.highscore_height))) + "m"
