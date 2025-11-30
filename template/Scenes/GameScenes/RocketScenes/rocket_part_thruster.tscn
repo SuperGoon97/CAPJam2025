@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://4j6slkd7rbtb" path="res://Scenes/AudioScenes/thruster_audio.tscn" id="7_3chf7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
-size = Vector3(0.8, 0.8, 0.8)
+size = Vector3(0.9, 0.9, 0.9)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
 size = Vector3(1.01, 1.01, 1.01)
@@ -20,7 +20,7 @@ script = ExtResource("1_brtww")
 prefered_socket = NodePath("RocketSocketPoint3")
 
 [node name="RocketSocketPoint3" parent="." instance=ExtResource("2_brtww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53007364, 0.005548835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5251802, 0.005548835)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 4.371139e-08, 0, -4.371139e-08, -0.5, 0, 0, 0, 0.5, 0, 0.505102, 0)
