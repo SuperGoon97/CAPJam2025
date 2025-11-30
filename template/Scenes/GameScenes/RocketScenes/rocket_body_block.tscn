@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="2_ev4du"]
 [ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_xcyed"]
 [ext_resource type="Material" uid="uid://bqcmptvw4yal6" path="res://Assets/Materials/body_material.tres" id="3_o6p3e"]
-[ext_resource type="ArrayMesh" uid="uid://dduvjm7e6fbkc" path="res://Assets/Meshes/RocketBodyPart.res" id="3_qhk5o"]
+[ext_resource type="ArrayMesh" uid="uid://c2xwq3wmsgg7k" path="res://Assets/Meshes/RocketBodyPart.res" id="3_qhk5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
 
