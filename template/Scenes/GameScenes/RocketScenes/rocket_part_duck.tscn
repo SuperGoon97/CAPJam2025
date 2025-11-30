@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://blv5ns33b0gxu"]
+
+[ext_resource type="Script" uid="uid://fq8hqk0bfji1" path="res://Scripts/Game/Rocket/rocket_part.gd" id="1_ajs6c"]
+[ext_resource type="PackedScene" uid="uid://blrbcw6akeaon" path="res://Scenes/GameScenes/RocketScenes/rocket_socket_point.tscn" id="2_ggba7"]
+[ext_resource type="ArrayMesh" uid="uid://du5r4d0pdtt3q" path="res://Assets/Meshes/mdl_rubber_duck.res" id="3_kfo4a"]
+[ext_resource type="Script" uid="uid://gf8ldyvmhyx4" path="res://Scripts/Game/Rocket/rocket_socket_check_area.gd" id="5_535i2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbojs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhk5o"]
+size = Vector3(1.01, 1.01, 1.01)
+
+[node name="RocketBodyBlock" type="CollisionShape3D" node_paths=PackedStringArray("prefered_socket") groups=["RocketPart"]]
+shape = SubResource("BoxShape3D_vbojs")
+script = ExtResource("1_ajs6c")
+prefered_socket = NodePath("RocketSocketPoint5")
+
+[node name="RocketSocketPoint5" parent="." instance=ExtResource("2_ggba7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5251936, -0.004121065)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.3113417e-05, -300, -1.3113417e-05, 0, -1.3113417e-05, 300, -300, 1.3113417e-05, 5.7320565e-13, 0, -0.50505245, 0)
+mesh = ExtResource("3_kfo4a")
+
+[node name="RocketSocketCheckArea" type="Area3D" parent="."]
+script = ExtResource("5_535i2")
+
+[node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
+shape = SubResource("BoxShape3D_qhk5o")
+debug_color = Color(0.32697475, 0.6241081, 3.85046e-07, 0.41960785)
