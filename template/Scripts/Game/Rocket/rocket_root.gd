@@ -35,6 +35,8 @@ func _ready() -> void:
 		await GVar.scene_manager.game_ready
 	GVar.signal_bus.rocket_tank_added.connect(fuel_tank_added)
 	GVar.signal_bus.physics_enabled.connect(unfreeze)
+	GVar.signal_bus.rocket_part_added.connect(new_rocket_part)
+	GVar.signal_bus.rocket_part_sold.connect(rocket_part_sold)
 	if is_in_group("ShipRoot"):
 		_scoring_part = true
 		GVar.signal_bus.rocket_launch.connect(set_launched)
@@ -44,6 +46,12 @@ func _ready() -> void:
 		rocket_socket_check_area.area_left_clicked.connect(area_left_clicked)
 		
 	_total_fuel += starting_fuel
+
+func new_rocket_part():
+	mass += 1.0
+
+func rocket_part_sold(_args):
+	mass -= 1.0
 
 func fuel_tank_added(fuel:float):
 	_total_fuel += fuel
@@ -108,9 +116,10 @@ func unfreeze():
 
 func _on_body_shape_entered(_body_rid: RID, _body: Node, _body_shape_index: int, _local_shape_index: int) -> void:
 	var node = shape_owner_get_owner(shape_find_owner(_local_shape_index))
-	if node.has_method("explode"):
-		node.explode()
-		return
+	if node:
+		if node.has_method("explode"):
+			node.explode()
+			return
 	if _body_shape_index == 0:
 		explode()
 		return

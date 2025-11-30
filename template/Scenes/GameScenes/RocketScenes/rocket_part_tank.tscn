@@ -30,3 +30,6 @@ script = ExtResource("3_6opic")
 [node name="SocketCheckShape" type="CollisionShape3D" parent="RocketSocketCheckArea"]
 shape = SubResource("BoxShape3D_qhk5o")
 debug_color = Color(0.32697475, 0.6241081, 3.85046e-07, 0.41960785)
+
+[node name="RocketSocketPoint6" parent="." instance=ExtResource("2_6idbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5220194, -0.00824213)
