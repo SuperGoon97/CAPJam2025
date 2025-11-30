@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/nice_shot_wii_sports.mp3-20c01719e15f0092136f
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
