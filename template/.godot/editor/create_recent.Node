@@ -1,3 +1,5 @@
+VBoxContainer
+HBoxContainer
 GPUParticles3D
 MeshInstance3D
 CPUParticles3D
@@ -11,4 +13,3 @@ Generic6DOFJoint3D
 PinJoint3D
 TextureRect
 ButtonBase
-HBoxContainer
