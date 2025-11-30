@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx32k68atdmxd"]
+[gd_scene load_steps=6 format=3 uid="uid://cx32k68atdmxd"]
 
 [ext_resource type="Script" uid="uid://dwiu27w0ge27m" path="res://Scripts/UI/ui_in_game.gd" id="1_jfobj"]
 [ext_resource type="Script" uid="uid://dvuqacg71gkk3" path="res://Scripts/UI/Game/fuel_progress_bar.gd" id="2_vhgnh"]
+[ext_resource type="Script" uid="uid://mey0psw0vwk3" path="res://Scripts/UI/speed_label.gd" id="3_uw2xm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfobj"]
 border_width_left = 8
@@ -83,3 +84,24 @@ theme_override_constants/shadow_outline_size = 27
 theme_override_font_sizes/font_size = 48
 text = "2500m"
 horizontal_alignment = 1
+
+[node name="Speed_Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -464.0
+offset_right = -231.0
+offset_bottom = 99.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 25
+theme_override_constants/shadow_outline_size = 27
+theme_override_font_sizes/font_size = 72
+text = "2500m"
+horizontal_alignment = 1
+script = ExtResource("3_uw2xm")
