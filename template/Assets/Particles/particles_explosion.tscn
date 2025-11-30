@@ -1,4 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://bytphai17goku"]
+[gd_scene load_steps=21 format=3 uid="uid://bytphai17goku"]
+
+[ext_resource type="Script" uid="uid://cji43mluqc633" path="res://Assets/Particles/explosion.gd" id="1_bl8h0"]
 
 [sub_resource type="Curve" id="Curve_55083"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5114504, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -101,6 +103,7 @@ color_ramp = SubResource("GradientTexture1D_lwvw2")
 emission_curve = SubResource("CurveTexture_ybymx")
 
 [node name="Explosion" type="Node3D"]
+script = ExtResource("1_bl8h0")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
 emitting = false

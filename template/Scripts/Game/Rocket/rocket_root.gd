@@ -2,8 +2,7 @@ class_name RocketRoot extends RigidBody3D
 
 signal do_socket_overlap_check
 
-const CUSTOM_GENERIC_6_DOF_JOINT_3D = preload("res://Scenes/Components/custom_generic_6dof_joint3d.tscn")
-const CUSTOM_PIN_JOINT = preload("res://Scenes/Components/custom_pin_joint.tscn")
+const PARTICLES_EXPLOSION = preload("res://Assets/Particles/particles_explosion.tscn")
 
 @export var starting_fuel:float = 100.0
 
@@ -12,6 +11,7 @@ var _attached_socket:RocketSocketPoint
 var _array_joints:Array[PinJoint3D]
 var _scoring_part:bool = false
 var _launched:bool = false
+var _exploded:bool = false
 
 var _total_fuel:float = 0.0:
 	set(value):
@@ -22,7 +22,7 @@ var current_fuel:float = 0.0:
 		current_fuel = value
 		current_fuel_percentage = current_fuel/_total_fuel
 		GVar.signal_bus.rocket_fuel_changed.emit(current_fuel,current_fuel_percentage)
-		print_rich("[color=brown] current fuel = " + str(current_fuel) + " %" + str(current_fuel_percentage*100.0) +"[/color]")
+		#print_rich("[color=brown] current fuel = " + str(current_fuel) + " %" + str(current_fuel_percentage*100.0) +"[/color]")
 var current_fuel_percentage:float = 0.0
 
 var do_once_sold:bool = true
@@ -38,6 +38,8 @@ func _ready() -> void:
 	if is_in_group("ShipRoot"):
 		_scoring_part = true
 		GVar.signal_bus.rocket_launch.connect(set_launched)
+		body_shape_entered.connect(_on_body_shape_entered)
+		body_entered.connect(_body_entered)
 	else:
 		rocket_socket_check_area.area_left_clicked.connect(area_left_clicked)
 		
@@ -62,11 +64,13 @@ func _physics_process(_delta: float) -> void:
 			GVar.signal_bus.rocket_root_height_changed.emit(global_position.y)
 
 func explode():
-		for i in _array_joints.size():
-			print_rich("[color=red]Successful break[/color]")
-			var joint:Node3D = _array_joints.pop_back()
-			joint.call_deferred("queue_free")
-			
+	if !_exploded:
+		_exploded = true
+		GVar.signal_bus.root_destroyed.emit()
+		var new_particle:Node3D = PARTICLES_EXPLOSION.instantiate()
+		GVar.active_scene.add_child(new_particle)
+		new_particle.global_position = global_position
+		call_deferred("queue_free")
 
 func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:float):
 	mass = _mass
@@ -86,14 +90,6 @@ func setup(new_parent:RigidBody3D,new_attached_socket:RocketSocketPoint,_mass:fl
 			if !area_parent.get_parent() == self:
 				overlapping_sockets.push_back(area.get_parent())
 	for socket in overlapping_sockets:
-		var new_joint:PinJoint3D = CUSTOM_PIN_JOINT.instantiate()
-		socket.get_parent().add_child(new_joint)
-		new_joint.exclude_nodes_from_collision = false
-		new_joint.global_position = socket.global_position
-		new_joint.node_a = socket.get_parent().get_path()
-		new_joint.node_b = self.get_path()
-		_array_joints.push_back(new_joint)
-		print_rich("[color=blue]"+str(_array_joints)+"[/color]")
 		socket.set_socket_enabled(false)
 	do_socket_overlap_check.emit()
 
@@ -108,3 +104,18 @@ func area_left_clicked():
 
 func unfreeze():
 	set_deferred("freeze",false)
+
+
+func _on_body_shape_entered(_body_rid: RID, _body: Node, _body_shape_index: int, _local_shape_index: int) -> void:
+	var node = shape_owner_get_owner(shape_find_owner(_local_shape_index))
+	if node.has_method("explode"):
+		node.explode()
+		return
+	if _body_shape_index == 0:
+		explode()
+		return
+
+
+func _body_entered(_body:Node):
+	pass
+	#print("collision_2")

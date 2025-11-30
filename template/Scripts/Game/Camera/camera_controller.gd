@@ -53,7 +53,8 @@ func _physics_process(delta: float) -> void:
 		child_cam.position.y = clampf(child_cam.position.y + (y_direction * delta),0.0,INF)
 	
 	if look_at_mode:
-		global_position = global_position.move_toward(ship_root.global_position,delta * pow(global_position.distance_to(ship_root.global_position),2))
+		if ship_root:
+			global_position = global_position.move_toward(ship_root.global_position,delta * pow(global_position.distance_to(ship_root.global_position),2))
 	else:
 		var _distance_to_midpoint = global_position.distance_to(desired_position)
 		if  _distance_to_midpoint > camera_distance_to_midpoint_tolerance:

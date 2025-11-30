@@ -13,9 +13,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _do_thrust:
-		if rocket_root.current_fuel >= fuel_cost_per_delta * delta:
-			rocket_root.apply_force(global_transform.basis.y * thrust_force * delta,thrust_point.global_position)
-			rocket_root.current_fuel -= fuel_cost_per_delta * delta
+		if rocket_root:
+			if rocket_root.current_fuel >= fuel_cost_per_delta * delta:
+				rocket_root.apply_force(global_transform.basis.y * thrust_force * delta,thrust_point.global_position)
+				rocket_root.current_fuel -= fuel_cost_per_delta * delta
 
 func rocket_launch():
 	_do_thrust = true

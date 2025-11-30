@@ -1,9 +1,13 @@
 class_name RocketPart extends CollisionShape3D
 
+const PARTICLES_EXPLOSION = preload("res://Assets/Particles/particles_explosion.tscn")
+
+
 signal do_socket_overlap_check
 
 var do_once_sold:bool = true
 var resource_data:RocketPartResource
+var _exploded:bool = false
 @onready var rocket_socket_check_area: RocketArea3D = $RocketSocketCheckArea
 @export var prefered_socket:RocketSocketPoint
 
@@ -11,13 +15,16 @@ func _ready() -> void:
 	if !GVar.signal_bus:
 		await GVar.scene_manager.game_ready
 	rocket_socket_check_area.area_left_clicked.connect(area_left_clicked)
+	GVar.signal_bus.root_destroyed.connect(become_independant)
 
-#func explode():
-		#for i in _array_joints.size():
-			#print_rich("[color=red]Successful break[/color]")
-			#var joint:Node3D = _array_joints.pop_back()
-			#joint.call_deferred("queue_free")
-			#
+func explode():
+	if !_exploded:
+		_exploded = true
+		var new_particle:Node3D = PARTICLES_EXPLOSION.instantiate()
+		GVar.active_scene.add_child(new_particle)
+		new_particle.global_position = global_position
+		call_deferred("queue_free")
+
 
 func setup(attached_socket:RocketSocketPoint):
 	var temp_pos = attached_socket.get_parent().global_position
@@ -60,3 +67,17 @@ func area_left_clicked():
 	if do_once_sold:
 		GVar.signal_bus.rocket_part_sold.emit(self)
 		do_once_sold = !do_once_sold
+
+func become_independant():
+	var new_parent:RigidBody3D = RigidBody3D.new()
+	GVar.scene_manager.current_scene.add_child(new_parent)
+	new_parent.global_position = global_position
+	reparent(new_parent)
+	new_parent.contact_monitor = true
+	new_parent.max_contacts_reported = 4
+	await get_tree().process_frame
+	new_parent.body_entered.connect(_body_entered)
+
+func _body_entered(_body:Node):
+	print("bingbang")
+	explode()

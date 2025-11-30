@@ -13,7 +13,7 @@ func _init(signal_array:Array[Signal]) -> void:
 		if !_signal.is_connected(signal_callback):
 			_signal.connect(signal_callback.bind(_signal))
 
-func signal_callback(args,_signal:Signal):
+func signal_callback(_signal:Signal,...args):
 	var _signals_state:Array[bool] = signal_dict.values()
 	if !first_found:
 		if _signals_state.all(GFnc.all_false):

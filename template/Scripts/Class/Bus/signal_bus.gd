@@ -46,3 +46,6 @@ signal score_changed(new_score:int)
 signal current_height_changed(value:float)
 @warning_ignore("unused_signal")
 signal highscore_height_changed(value:float)
+
+@warning_ignore("unused_signal")
+signal root_destroyed

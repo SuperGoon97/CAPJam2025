@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 		var dif:float = _desired_z - position.z
 		position.z += pow(dif,2.0) * delta
 	if _look_at_mode:
-		look_at(root_rocket.global_position)
+		if root_rocket:
+			look_at(root_rocket.global_position)
 
 func setup():
 	if root_rocket == null:
