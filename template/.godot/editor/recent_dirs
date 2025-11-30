@@ -1,3 +1,6 @@
+res://Assets/Meshes
+C:/Program Files/Blender Foundation/Blender 4.3
+C:/Users/SuperGoon/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/blender
 res://Assets/Particles
 res://Scripts/Game/Rocket
 res://Scripts/UI
@@ -12,11 +15,8 @@ res://Scripts/Resources/GameResources/ShipResources
 res://Scripts/Resources/Enviroments
 res://
 res://Scenes/Components
-D:/Godot/Template-Project/template/Exports
 res://Assets/Sprites
 res://Assets/Audio
 res://Scripts/Globals
 res://Assets/Audio/AudioFiles
 res://Scripts/Resources/Materials
-res://Scripts/Resources/Materials/Master Materials
-res://Assets/Meshes

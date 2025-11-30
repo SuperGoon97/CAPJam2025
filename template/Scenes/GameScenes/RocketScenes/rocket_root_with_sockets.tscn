@@ -6,6 +6,9 @@
 [node name="RocketBase" instance=ExtResource("1_qe50t")]
 mass = 0.75
 
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
 [node name="RocketSocketPoint" parent="." index="2" instance=ExtResource("2_lk16e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.52591693)
 
